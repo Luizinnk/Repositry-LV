@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Itália | Viajeio Mundo</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:#f8f1e7;color:#1b263b;overflow-x:hidden;font-family:Arial,Helvetica,sans-serif;}
+    header{min-height:100vh;padding:28px 8%;background:linear-gradient(90deg, #006847ee, #006847b8, #ce2b3755), url("img/italia.png");background-size:cover;background-position:center;color:white;position:relative;}
+    header::after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:130px;background:linear-gradient(to top,#f8f1e7,transparent);}
+    .topo-viajeio{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:20px 34px;border-radius:34px;background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(240,247,255,.94));box-shadow:0 25px 65px rgba(0,32,91,.22);border:1px solid rgba(255,255,255,.65);overflow:hidden;margin-bottom:45px;}
+    .topo-viajeio::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 45%, rgba(0,117,190,.16), transparent 28%),radial-gradient(circle at 88% 55%, rgba(255,196,0,.18), transparent 30%);z-index:0;}
+    .topo-viajeio::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:7px;background:linear-gradient(90deg,#009739,#ffc400,#0057b8,#e63946);z-index:1;}
+    .marca{position:relative;z-index:2;display:flex;align-items:center;gap:20px;}
+    .logo img{width:180px;display:block;filter:drop-shadow(0 12px 20px rgba(8,32,70,.12));}
+    .marca h2{font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1;margin-bottom:7px;letter-spacing:-1.5px;background:linear-gradient(135deg,#082046,#0057b8,#009739);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 10px 24px rgba(8,32,70,.08);}
+    .marca h2 span{color:#ffc400;}
+    .marca p{color:#0057b8;font-size:13px;font-weight:900;letter-spacing:2px;text-transform:uppercase;}
+    .menu-topo{position:relative;z-index:2;display:flex;align-items:center;gap:14px;}
+    .menu-topo a{text-decoration:none;padding:14px 22px;border-radius:40px;font-weight:900;transition:.3s;box-shadow:0 12px 30px rgba(8,32,70,.12);}
+    .link-claro{background:white;color:#082046;}
+    .link-escuro{background:#082046;color:white;}
+    .menu-topo a:hover{transform:translateY(-4px);}
+    .hero{position:relative;z-index:2;margin-top:90px;max-width:860px;}
+    .tag{display:inline-block;padding:11px 20px;border-radius:40px;background:#f5d27a;color:#00205b;font-weight:900;margin-bottom:24px;box-shadow:0 12px 30px rgba(245,210,122,.35);}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:78px;line-height:1.02;margin-bottom:24px;letter-spacing:-2px;}
+    h1 span{color:#f5d27a;}
+    .hero p{font-size:22px;line-height:1.75;color:#f7f7f7;max-width:740px;}
+    .hero-buttons{margin-top:35px;display:flex;gap:18px;flex-wrap:wrap;}
+    .btn{padding:15px 30px;border-radius:40px;text-decoration:none;font-weight:900;transition:.3s;}
+    .btn-primary{background:#f5d27a;color:#00205b;box-shadow:0 15px 35px rgba(245,210,122,.35);}
+    .btn-secondary{background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(10px);}
+    .btn:hover{transform:translateY(-5px);}
+    section{padding:90px 8%;}
+    .intro{text-align:center;max-width:980px;margin:auto;}
+    .intro h2,.titulo,.experiencia h2,.frase-final h2{font-family:Georgia,"Times New Roman",serif;}
+    .intro h2{font-size:52px;color:#00205b;margin-bottom:22px;}
+    .intro h2 span,.titulo span{color:#ce2b37;}
+    .intro p{font-size:19px;line-height:1.85;color:#516173;}
+    .faixa-pais{margin-top:60px;height:13px;border-radius:20px;background:linear-gradient(90deg,#006847,#ffffff,#ce2b37);box-shadow:0 10px 25px rgba(0,0,0,.12);}
+    .categorias{background:radial-gradient(circle at top left, #00684718, transparent 35%),radial-gradient(circle at bottom right, #ce2b3718, transparent 35%),#f8f1e7;}
+    .titulo{text-align:center;font-size:50px;color:#00205b;margin-bottom:15px;}
+    .subtitulo{text-align:center;max-width:820px;margin:0 auto 60px;color:#5b6b7d;font-size:18px;line-height:1.8;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:35px;max-width:1250px;margin:auto;}
+    .card{background:white;border-radius:32px;overflow:hidden;box-shadow:0 20px 45px rgba(0,32,91,.13);border:1px solid rgba(0,32,91,.08);transition:.35s;position:relative;}
+    .card:hover{transform:translateY(-10px);box-shadow:0 28px 60px rgba(0,32,91,.22);}
+    .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:7px;background:linear-gradient(90deg,#006847,#ffffff,#ce2b37);z-index:5;}
+    .carousel{width:100%;height:235px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;}
+    .carousel::-webkit-scrollbar{height:8px;} .carousel::-webkit-scrollbar-thumb{background:#006847;border-radius:20px;}
+    .carousel img{min-width:100%;height:235px;object-fit:cover;scroll-snap-align:start;display:block;}
+    .card-content{padding:30px;}
+    .card h3{font-family:Georgia,"Times New Roman",serif;color:#00205b;font-size:31px;margin-bottom:14px;}
+    .card p{color:#536476;line-height:1.8;font-size:16px;margin-bottom:18px;}
+    .mini-info{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+    .mini-info span{background:#f1f5ff;color:#00205b;padding:9px 13px;border-radius:20px;font-size:13px;font-weight:900;}
+    .experiencia{background:linear-gradient(135deg,#006847f2,#ce2b37cc),url("img/italia.png");background-size:cover;background-position:center;color:white;text-align:center;}
+    .experiencia h2{font-size:50px;margin-bottom:20px;color:#f5d27a;}
+    .experiencia p{max-width:970px;margin:auto;font-size:19px;line-height:1.9;color:#f1f5ff;}
+    .lista{margin-top:45px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;max-width:1050px;margin-left:auto;margin-right:auto;}
+    .item{padding:25px;border-radius:24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);}
+    .item strong{display:block;color:#f5d27a;margin-bottom:8px;font-size:18px;}
+    .frase-final{background:#fff;text-align:center;}
+    .frase-final h2{color:#00205b;font-size:44px;margin-bottom:20px;}
+    .frase-final p{max-width:850px;margin:auto;color:#536476;font-size:19px;line-height:1.9;}
+    footer{background:#061225;color:#d9e5f2;text-align:center;padding:35px;}
+    @media(max-width:900px){.topo-viajeio{flex-direction:column;align-items:center;gap:22px;padding:24px;}.marca{flex-direction:column;text-align:center;}.logo img{width:155px;}.marca h2{font-size:30px;}.marca p{font-size:10px;}.menu-topo{width:100%;flex-direction:column;align-items:stretch;}.menu-topo a{text-align:center;}h1{font-size:48px;}.hero{margin-top:80px;}.intro h2,.titulo,.experiencia h2{font-size:36px;}.grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="topo-viajeio">
+    <div class="marca">
+      <div class="logo">
+        <img src="img/viajeiomundologo.png.png" alt="Logo Viajeio Mundo">
+      </div>
+      <div>
+        <h2>Viajeio <span>Mundo</span></h2>
+        <p>explorar • conhecer • viver</p>
+      </div>
+    </div>
+    <div class="menu-topo">
+      <a href="#categorias" class="link-claro">Explorar Itália</a>
+      <a href="index.html" class="link-escuro">← Voltar</a>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="tag">Itália • Arte • História • Gastronomia</div>
+    <h1>A beleza eterna da <span>Itália</span></h1>
+    <p>A Itália reúne arte, arquitetura, culinária, tradição familiar e cidades históricas que parecem museus a céu aberto.</p>
+    <div class="hero-buttons">
+      <a href="#categorias" class="btn btn-primary">Explorar Itália</a>
+      <a href="index.html" class="btn btn-secondary">Voltar aos países</a>
+    </div>
+  </div>
+</header>
+<section>
+  <div class="intro">
+    <h2>Benvenuti in <span>Italia</span></h2>
+    <p>A Itália é um país europeu conhecido por sua herança romana, pelo Renascimento, pela culinária mundialmente amada e por cidades como Roma, Florença, Veneza e Milão.</p>
+    <div class="faixa-pais"></div>
+  </div>
+</section>
+<section class="categorias" id="categorias">
+  <h2 class="titulo">Conheça Itália por <span>categorias</span></h2>
+  <p class="subtitulo">Arraste as imagens de cada card para ver mais fotos. Cada categoria mostra uma parte especial da cultura do país, deixando a navegação mais visual e interessante.</p>
+  <div class="grid">
+        <div class="card">
+          <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Turismo">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80" alt="Turismo">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1200&q=80" alt="Turismo">
+          </div>
+          <div class="card-content">
+            <h3>Turismo</h3>
+            <p>Roma, Veneza, Florença, Pisa e a Costa Amalfitana são destinos muito procurados por sua beleza, história e arquitetura.</p>
+            <div class="mini-info"><span>Coliseu</span><span>Veneza</span><span>Pisa</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="História">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80" alt="História">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1200&q=80" alt="História">
+          </div>
+          <div class="card-content">
+            <h3>História</h3>
+            <p>A Itália foi o centro do Império Romano e um dos berços do Renascimento, influenciando arte, ciência e cultura ocidental.</p>
+            <div class="mini-info"><span>Roma Antiga</span><span>Renascimento</span><span>Patrimônio</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Gastronomia">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80" alt="Gastronomia">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1200&q=80" alt="Gastronomia">
+          </div>
+          <div class="card-content">
+            <h3>Gastronomia</h3>
+            <p>Pizza, massas, gelato, risotos, azeites e cafés fazem da culinária italiana uma das mais populares do planeta.</p>
+            <div class="mini-info"><span>Pizza</span><span>Pasta</span><span>Gelato</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Arte e arquitetura">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80" alt="Arte e arquitetura">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1200&q=80" alt="Arte e arquitetura">
+          </div>
+          <div class="card-content">
+            <h3>Arte e arquitetura</h3>
+            <p>O país abriga obras de Michelangelo, Leonardo da Vinci e Rafael, além de igrejas, praças e palácios históricos.</p>
+            <div class="mini-info"><span>Da Vinci</span><span>Michelangelo</span><span>Duomo</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Moda">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80" alt="Moda">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1200&q=80" alt="Moda">
+          </div>
+          <div class="card-content">
+            <h3>Moda</h3>
+            <p>Milão é uma das capitais mundiais da moda, com marcas italianas famosas pelo luxo, elegância e design refinado.</p>
+            <div class="mini-info"><span>Milão</span><span>Design</span><span>Luxo</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Estilo de vida">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80" alt="Estilo de vida">
+            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1200&q=80" alt="Estilo de vida">
+          </div>
+          <div class="card-content">
+            <h3>Estilo de vida</h3>
+            <p>A cultura italiana valoriza família, comida, convivência, tradição e o prazer de viver bem no cotidiano.</p>
+            <div class="mini-info"><span>Família</span><span>Tradição</span><span>La dolce vita</span></div>
+          </div>
+        </div>
+  </div>
+</section>
+<section class="experiencia">
+  <h2>O que torna Itália inesquecível?</h2>
+  <p>Itália não é apenas um destino para visitar, é uma experiência cultural para sentir. Sua história, seus símbolos, suas paisagens e seu modo de vida ajudam a formar uma identidade única e marcante.</p>
+  <div class="lista">
+    <div class="item"><strong>País</strong>Itália</div>
+    <div class="item"><strong>Cultura</strong>Tradições e história</div>
+    <div class="item"><strong>Experiência</strong>Turismo e identidade</div>
+    <div class="item"><strong>Destaque</strong>Patrimônio cultural</div>
+  </div>
+</section>
+<section class="frase-final">
+  <h2>Itália: uma viagem cultural completa</h2>
+  <p>Conhecer Itália é descobrir como a cultura pode aparecer na arquitetura, na comida, nas festas, nas paisagens e na forma como as pessoas preservam sua história.</p>
+</section>
+<footer><p>© 2026 Viajeio Mundo • Página cultural de Itália</p></footer>
+</body>
+</html>

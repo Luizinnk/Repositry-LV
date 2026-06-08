@@ -1810,3 +1810,21 @@ p  { color: var(--text-3); line-height: 1.72; }
   .itinerary-day { flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
   .day-badge { align-self: flex-start; }
 }
+
+/* ── Respeita preferência de movimento reduzido ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal > * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .country-hero-media {
+    animation: none !important;
+  }
+  .next-country-link i,
+  .anchor-nav a,
+  .tab-btn,
+  .dish-card,
+  .spot-card {
+    transition: none !important;
+  }
+}

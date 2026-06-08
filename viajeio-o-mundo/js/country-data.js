@@ -164,7 +164,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   japao: makeCountry({
-    name: "Japao",
+    name: "Japão",
     flag: "🇯🇵",
     group: "Grupo A",
     tagline: "Templos, tecnologia, gastronomia precisa e uma cultura visual inesquecivel.",
@@ -198,7 +198,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   franca: makeCountry({
-    name: "Franca",
+    name: "França",
     flag: "🇫🇷",
     group: "Grupo B",
     tagline: "Arte, moda, gastronomia refinada e paisagens que parecem cinema.",
@@ -266,7 +266,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   mexico: makeCountry({
-    name: "Mexico",
+    name: "México",
     flag: "🇲🇽",
     group: "Grupo B",
     tagline: "Cores, sabores, piramides, musica e estadios com alma de festa popular.",
@@ -334,7 +334,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   suica: makeCountry({
-    name: "Suica",
+    name: "Suíça",
     flag: "🇨🇭",
     group: "Grupo C",
     tagline: "Alpes, lagos cristalinos, precisao urbana e vilas que parecem cenarios.",
@@ -368,7 +368,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   italia: makeCountry({
-    name: "Italia",
+    name: "Itália",
     flag: "🇮🇹",
     group: "Grupo C",
     tagline: "Historia, arte, massas, ruinas classicas e uma relacao dramatica com o futebol.",
@@ -776,7 +776,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   croacia: makeCountry({
-    name: "Croacia",
+    name: "Croácia",
     flag: "🇭🇷",
     group: "Grupo F",
     tagline: "Litoral adriatico, cidades medievais e uma selecao de alma competitiva.",
@@ -878,7 +878,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   belgica: makeCountry({
-    name: "Belgica",
+    name: "Bélgica",
     flag: "🇧🇪",
     group: "Grupo G",
     tagline: "Cidades medievais, chocolate, cervejas especiais e geracoes talentosas no futebol.",
@@ -912,7 +912,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   camaroes: makeCountry({
-    name: "Camaroes",
+    name: "Camarões",
     flag: "🇨🇲",
     group: "Grupo G",
     tagline: "Diversidade natural, musica, mercados e uma tradicao africana forte em Copas.",
@@ -946,7 +946,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   polonia: makeCountry({
-    name: "Polonia",
+    name: "Polônia",
     flag: "🇵🇱",
     group: "Grupo G",
     tagline: "Cidades reconstruidas, historia profunda, montanhas e uma torcida apaixonada.",
@@ -1048,7 +1048,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   servia: makeCountry({
-    name: "Servia",
+    name: "Sérvia",
     flag: "🇷🇸",
     group: "Grupo H",
     tagline: "Belgrado, rios, vida noturna, mosteiros e uma escola esportiva competitiva.",
@@ -1082,7 +1082,7 @@ window.VIAJEIO_COUNTRIES = {
   }),
 
   tunisia: makeCountry({
-    name: "Tunisia",
+    name: "Tunísia",
     flag: "🇹🇳",
     group: "Grupo H",
     tagline: "Mediterraneo, medinas, desertos e marcas antigas do norte da Africa.",
@@ -1210,14 +1210,17 @@ const registerWorldCupCountry = (slug, profile) => {
       ["Cultura", cultureQuery],
       ["Futebol", footballQuery],
     ],
+    facts: profile.facts || {},
+    footballStat: profile.footballStat || {},
+    dishes: profile.dishes || [],
   });
 };
 
 const worldCup2026Profiles = {
-  mexico: { name: "Mexico", flag: "🇲🇽", group: "Grupo A", tagline: "Anfitriao, cores, piramides, comida intensa e uma torcida que transforma a Copa em festa.", heroQuery: "Mexico City Mexico", capital: "Cidade do Mexico" },
+  mexico: { name: "México", flag: "🇲🇽", group: "Grupo A", tagline: "Anfitriao, cores, piramides, comida intensa e uma torcida que transforma a Copa em festa.", heroQuery: "Mexico City Mexico", capital: "Cidade do Mexico" },
   "coreia-sul": { name: "Coreia do Sul", flag: "🇰🇷", group: "Grupo A", tagline: "Tecnologia, K-culture, templos e uma selecao veloz em ritmo de Copa.", heroQuery: "Seoul South Korea skyline", capital: "Seul" },
   "africa-sul": {
-    name: "Africa do Sul", flag: "🇿🇦", group: "Grupo A",
+    name: "África do Sul", flag: "🇿🇦", group: "Grupo A",
     tagline: "Da Montanha da Mesa ao Kruger, a nacao arco-iris que seduz o mundo com 12 idiomas e tres capitais.",
     heroQuery: "Table Mountain Cape Town South Africa aerial view",
     portraitQuery: "South Africa landscape Drakensberg mountains",
@@ -1256,9 +1259,17 @@ const worldCup2026Profiles = {
       ["Danca Zulu", "Zulu traditional dance South Africa cultural"],
     ],
     capital: "Pretoria (adm.), Cidade do Cabo (leg.), Bloemfontein (jud.)",
+    facts: { capital: "Pretória / Cidade do Cabo / Bloemfontein", population: "62 milhões", language: "11 idiomas oficiais", currency: "Rand (ZAR)" },
+    footballStat: { titles: 0, player: "Benni McCarthy", style: "Físico e combativo" },
+    dishes: [
+      ["Braai", "Churrasco sul-africano em lenha viva, ritual social que une famílias no quintal ou na varanda todo fim de semana.", "🔥", "braai South Africa barbecue meat fire traditional social"],
+      ["Bunny Chow", "Pão escavado recheado de caril de frango ou feijão. Criado pela comunidade indiana de Durban, hoje consumido em todo o país.", "🍞", "bunny chow South Africa curry bread Durban Indian street food"],
+      ["Bobotie", "Carne moída com especiarias, frutos secos e crosta de ovo-creme. Prato nacional de origem malaia-cabo, servido com arroz açafrão.", "🥘", "bobotie South Africa minced beef egg custard curry Cape Malay"],
+      ["Biltong", "Carne bovina ou de caça seca e temperada com coentro e vinagre, curada ao ar. O snack nacional mais consumido.", "🥩", "biltong South Africa dried cured meat beef game traditional snack"],
+    ],
   },
   tchequia: {
-    name: "Tchequia", flag: "🇨🇿", group: "Grupo A",
+    name: "Tchéquia", flag: "🇨🇿", group: "Grupo A",
     tagline: "A terra de Kafka, do Pilsner e da Ponte Carlos: no coracao da Europa, onde a historia goteja de cada pedra.",
     heroQuery: "Prague Castle Charles Bridge Czech Republic aerial view",
     portraitQuery: "Bohemian landscape Czech Republic countryside castle",
@@ -1297,13 +1308,21 @@ const worldCup2026Profiles = {
       ["Tradicoes Moravas", "Moravia folk festival traditional costume Czech Republic"],
     ],
     capital: "Praga",
+    facts: { capital: "Praga", population: "10,8 milhões", language: "Tcheco", currency: "Coroa Tcheca (CZK)" },
+    footballStat: { titles: 0, player: "Pavel Nedvěd", style: "Técnico e organizado" },
+    dishes: [
+      ["Svíčková na Smetaně", "Filé de lombo bovino com molho cremoso de legumes, cranberry e knedlíky (dumplings de pão). O prato de domingo mais amado.", "🥩", "svickova Czech Republic beef cream sauce knedliky dumplings"],
+      ["Guláš Tcheco", "Ensopado de carne bovina com cebola, páprica e temperos, servido invariavelmente com knedlíky. Presença garantida em qualquer hospoda.", "🍲", "gulas Czech Republic beef goulash paprika knedliky pub"],
+      ["Trdelník", "Massa enrolada em espeto assada sobre brasas, coberta de açúcar e canela. Vendido em todos os mercados das ruas de Praga.", "🍩", "trdlenik Czech Republic chimney cake sugar cinnamon Prague street"],
+      ["Palačinky", "Crepes finíssimas dobradas ou enroladas com geleia de frutas, creme ou chocolate. Sobremesa caseira e onipresente nos restaurantes tchecos.", "🥞", "palacinka Czech Republic crepes pancakes fruit jam dessert traditional"],
+    ],
   },
 
-  canada: { name: "Canada", flag: "🇨🇦", group: "Grupo B", tagline: "Anfitriao com cidades multiculturais, natureza grandiosa e futebol em ascensao.", heroQuery: "Toronto Canada skyline", capital: "Toronto" },
-  suica: { name: "Suica", flag: "🇨🇭", group: "Grupo B", tagline: "Alpes, lagos, precisao urbana e uma selecao disciplinada.", heroQuery: "Switzerland Alps lake", capital: "Berna" },
+  canada: { name: "Canadá", flag: "🇨🇦", group: "Grupo B", tagline: "Anfitriao com cidades multiculturais, natureza grandiosa e futebol em ascensao.", heroQuery: "Toronto Canada skyline", capital: "Toronto" },
+  suica: { name: "Suíça", flag: "🇨🇭", group: "Grupo B", tagline: "Alpes, lagos, precisao urbana e uma selecao disciplinada.", heroQuery: "Switzerland Alps lake", capital: "Berna" },
   catar: { name: "Catar", flag: "🇶🇦", group: "Grupo B", tagline: "Doha, museus, deserto e legado recente de Copa no Oriente Medio.", heroQuery: "Doha Qatar skyline", capital: "Doha" },
   "bosnia-herzegovina": {
-    name: "Bosnia e Herzegovina", flag: "🇧🇦", group: "Grupo B",
+    name: "Bósnia e Herzegovina", flag: "🇧🇦", group: "Grupo B",
     tagline: "Onde Oriente encontra Ocidente: mesquitas otomanas, igrejas barrocas e a Ponte Velha de Mostar nos Balcas.",
     heroQuery: "Stari Most Mostar bridge Bosnia Herzegovina old city",
     portraitQuery: "Bosnia Herzegovina Una river landscape mountains waterfall",
@@ -1342,12 +1361,20 @@ const worldCup2026Profiles = {
       ["Cevapi Tradicional", "Cevapi traditional food Bosnia Herzegovina pita bread"],
     ],
     capital: "Sarajevo",
+    facts: { capital: "Sarajevo", population: "3,5 milhões", language: "Bósnio / Sérvio / Croata", currency: "Marco Conversível (BAM)" },
+    footballStat: { titles: 0, player: "Edin Džeko", style: "Intenso e direto" },
+    dishes: [
+      ["Ćevapi", "Rolinhos de carne bovina e cordeiro moídos, grelhados e servidos em pão somun com kajmak cremoso e cebola crua. O prato nacional mais querido.", "🥩", "cevapi Bosnia Herzegovina grilled meat pita somun kajmak onion"],
+      ["Burek", "Massa filo enrolada em espiral recheada de carne, queijo ou espinafre. Consumida desde o século XVI, especialmente no café da manhã.", "🥐", "burek Bosnia Herzegovina phyllo dough meat cheese spiral Sarajevo"],
+      ["Sarajevska Tava", "Ensopado de carne bovina com vegetais e molho de tomate, assado lentamente em terrina de barro. Prato que reflete a alma caseira bósnia.", "🫕", "Sarajevo tava Bosnia stew meat vegetables clay pot traditional"],
+      ["Baklava Bósnia", "Versão mais leve da baklava clássica, com nozes, mel e açúcar de baunilha. Presente em todas as confeitarias do Baščaršija.", "🍯", "baklava Bosnia Herzegovina nuts honey walnut pastry Sarajevo sweet"],
+    ],
   },
 
   brasil: { name: "Brasil", flag: "🇧🇷", group: "Grupo C", tagline: "Natureza monumental, musica, diversidade cultural e memoria viva do futebol mundial.", heroQuery: "Rio de Janeiro Brazil Christ Redeemer" },
   marrocos: { name: "Marrocos", flag: "🇲🇦", group: "Grupo C", tagline: "Medinas, deserto, montanhas e uma selecao que virou simbolo continental.", heroQuery: "Marrakech Morocco market" },
   escocia: {
-    name: "Escocia", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", group: "Grupo C",
+    name: "Escócia", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", group: "Grupo C",
     tagline: "Highlands selvagens, castelos ancestrais, o misterio do Loch Ness e 28 anos de espera pelo retorno ao Mundial.",
     heroQuery: "Edinburgh Castle Scotland aerial view old town",
     portraitQuery: "Scottish Highlands landscape glen mountains mist",
@@ -1386,6 +1413,14 @@ const worldCup2026Profiles = {
       ["Ilha de Skye", "Isle of Skye Fairy Pools Scotland turquoise water"],
     ],
     capital: "Edimburgo",
+    facts: { capital: "Edimburgo", population: "5,5 milhões", language: "Inglês / Gaélico Escocês", currency: "Libra Esterlina (GBP)" },
+    footballStat: { titles: 0, player: "Denis Law", style: "Raça e improvisação celta" },
+    dishes: [
+      ["Haggis", "Miúdos de carneiro com farinha de aveia, cebola e especiarias, cozido na barriga do animal. Prato nacional celebrado no Burns Night em janeiro.", "🫀", "haggis Scotland traditional national dish offal oatmeal neeps tatties"],
+      ["Cranachan", "Sobremesa de framboesas com chantilly, farinha de aveia torrada regada com whisky escocês e mel. Clássico das festas escocesas.", "🍓", "cranachan Scotland dessert raspberries cream whisky oatmeal honey"],
+      ["Cullen Skink", "Sopa cremosa de eglefim defumado com batata e cebola, originária da vila de Cullen. Um dos mais famosos pratos escoceses de peixe.", "🐟", "Cullen Skink Scotland smoked haddock soup creamy potato onion"],
+      ["Scotch Pie", "Pastel redondo de carne com crosta de massa quente, tradicional das arquibancadas dos estádios e das padarias escocesas.", "🥧", "Scotch pie Scotland meat pastry football grounds bakery traditional"],
+    ],
   },
   haiti: {
     name: "Haiti", flag: "🇭🇹", group: "Grupo C",
@@ -1427,6 +1462,14 @@ const worldCup2026Profiles = {
       ["Arte Primitiva Haitiana", "Haiti primitive art painting Haitian folk art colorful"],
     ],
     capital: "Port-au-Prince",
+    facts: { capital: "Port-au-Prince", population: "11,5 milhões", language: "Crioulo Haitiano / Francês", currency: "Gourde (HTG)" },
+    footballStat: { titles: 0, player: "Emmanuel Sanon", style: "Aguerrido e caribenho" },
+    dishes: [
+      ["Griot", "Pedaços de porco marinados em laranja azeda e alho, fritos até dourar e ficar crocantes. Prato nacional servido com arroz e pikliz.", "🐷", "griot Haiti fried pork crispy citrus marinade national dish"],
+      ["Riz National", "Arroz branco cozido com feijão preto, base absoluta de praticamente toda refeição haitiana. Simples, nutritivo e essencial.", "🍚", "riz national Haiti rice black beans everyday traditional meal"],
+      ["Joumou", "Sopa de abóbora com carne, batata, macarrão e especiarias. Proibida aos escravizados, é servida no Ano Novo desde 1804. Patrimônio da UNESCO.", "🎃", "joumou soup Haiti squash pumpkin beef independence January UNESCO"],
+      ["Pikliz", "Picles de repolho fermentado com cenoura, pimenta habanero e vinagre. Acompanhamento picante obrigatório em toda mesa haitiana.", "🌶️", "pikliz Haiti pickled cabbage habanero pepper vinegar condiment hot"],
+    ],
   },
 
   "estados-unidos": { name: "Estados Unidos", flag: "🇺🇸", group: "Grupo D", tagline: "Anfitriao com metropoles, parques nacionais e futebol em crescimento acelerado.", heroQuery: "New York City USA skyline" },
@@ -1469,8 +1512,16 @@ const worldCup2026Profiles = {
       ["Carnaval de Encarnacion", "Encarnacion carnival Paraguay parade colorful"],
     ],
     capital: "Assuncao",
+    facts: { capital: "Assunção", population: "7,5 milhões", language: "Espanhol / Guarani", currency: "Guarani (PYG)" },
+    footballStat: { titles: 0, player: "José Luis Chilavert", style: "Garra defensiva" },
+    dishes: [
+      ["Sopa Paraguaya", "Pão de milho salgado e denso com queijo e cebola — o prato nacional. Não é sopa líquida; o nome vem de um erro culinário histórico do século XIX.", "🌽", "sopa paraguaya Paraguay corn bread cheese onion national dish"],
+      ["Chipa", "Rosca crocante de polvilho com queijo e ovos, consumida especialmente na Semana Santa. O lanche de rua mais popular do país.", "🫓", "chipa Paraguay cheese bread cassava starch street food traditional"],
+      ["Mbejú", "Crepe grossa de polvilho e queijo frita em frigideira. Café da manhã tradicional e herança guarani.", "🥞", "mbeju Paraguay cassava starch cheese flatbread traditional breakfast"],
+      ["Tereré", "Erva-mate gelada com água fria e frutas cítricas. Bebida cultural dos paraguaios, especialmente no verão. Símbolo da identidade guarani.", "🧉", "terere Paraguay cold yerba mate iced herbal drink guarani culture"],
+    ],
   },
-  australia: { name: "Australia", flag: "🇦🇺", group: "Grupo D", tagline: "Praias, recifes, desertos, cidades costeiras e esportes como estilo de vida.", heroQuery: "Sydney Australia Opera House" },
+  australia: { name: "Austrália", flag: "🇦🇺", group: "Grupo D", tagline: "Praias, recifes, desertos, cidades costeiras e esportes como estilo de vida.", heroQuery: "Sydney Australia Opera House" },
   turquia: {
     name: "Turquia", flag: "🇹🇷", group: "Grupo D",
     tagline: "Onde a Europa encontra a Asia: Istambul no Bósforo, Capadocia de barao e o templo mais antigo do mundo em Gobekli Tepe.",
@@ -1511,6 +1562,14 @@ const worldCup2026Profiles = {
       ["Dervixes Rodantes", "Whirling dervishes Konya Sema ceremony Sufi"],
     ],
     capital: "Ancara",
+    facts: { capital: "Ancara", population: "85 milhões", language: "Turco", currency: "Lira Turca (TRY)" },
+    footballStat: { titles: 0, firstTitle: "3° lugar em 2002", player: "Hakan Şükür", style: "Intenso e aguerrido" },
+    dishes: [
+      ["Döner Kebab", "Carne temperada assada lentamente no espeto vertical giratório, fatiada e servida em pão com vegetais. Uma das comidas de rua mais copiadas no mundo.", "🥙", "doner kebab Turkey rotating spit meat pita bread street food"],
+      ["Baklava", "Finas camadas de massa filo com pistache ou nozes, banhadas em xarope de mel. Ícone da doceria turca e otomana.", "🍯", "baklava Turkey phyllo dough pistachio walnut honey syrup dessert"],
+      ["Mantı", "Mini-pastéis de massa recheados de carne bovina e cebola, servidos com iogurte e manteiga com páprica. O ravioli turco.", "🥟", "manti Turkey small dumplings meat yogurt paprika butter sauce"],
+      ["Lahmacun", "Pizza turca fina e crocante coberta com carne moída temperada com ervas e especiarias. Dobrada e enrolada para comer andando.", "🫓", "lahmacun Turkey thin flatbread minced meat herbs spices crispy roll"],
+    ],
   },
 
   alemanha: { name: "Alemanha", flag: "🇩🇪", group: "Grupo E", tagline: "Historia, design, florestas, cervejarias e cultura futebolistica de alta performance.", heroQuery: "Berlin Germany Brandenburg Gate" },
@@ -1554,6 +1613,14 @@ const worldCup2026Profiles = {
       ["Vulcoes dos Andes", "Ecuador Andes volcanoes Cotopaxi landscape"],
     ],
     capital: "Quito",
+    facts: { capital: "Quito", population: "18 milhões", language: "Espanhol", currency: "Dólar Americano (USD)" },
+    footballStat: { titles: 0, player: "Enner Valencia", style: "Veloz e combativo" },
+    dishes: [
+      ["Ceviche de Camarão", "Camarão marinado em suco de limão com cebola roxa, coentro e tomate. Rei absoluto da costa pacífica equatoriana.", "🍤", "ceviche shrimp Ecuador Pacific coast lime cilantro tomato"],
+      ["Locro de Papa", "Sopa cremosa de batata andina com queijo e chicharrão. Prato reconfortante das alturas dos Andes, servido em todas as casas.", "🥔", "locro de papa Ecuador potato soup cheese chicharron Andes comfort"],
+      ["Seco de Pollo", "Frango ensopado com coriandro fresco, cerveja e especiarias. Servido com arroz branco e salada de abacate, o prato caseiro nacional.", "🍗", "seco pollo Ecuador chicken stew coriander beer rice national dish"],
+      ["Llapingachos", "Bolinhos de batata amassada recheados com queijo e grelhados na chapa. Acompanhamento andino clássico com ovo frito e churrizo.", "🫕", "llapingachos Ecuador potato cheese patties grilled Andes sausage egg"],
+    ],
   },
   "costa-marfim": {
     name: "Costa do Marfim", flag: "🇨🇮", group: "Grupo E",
@@ -1594,9 +1661,17 @@ const worldCup2026Profiles = {
       ["Grand-Bassam Colonial", "Grand-Bassam UNESCO colonial heritage Ivory Coast"],
     ],
     capital: "Yamoussoukro (politica); Abidjan (economica)",
+    facts: { capital: "Yamoussoukro (pol.) / Abidjan (ec.)", population: "27 milhões", language: "Francês", currency: "Franco CFA (XOF)" },
+    footballStat: { titles: 0, player: "Didier Drogba", style: "Físico e vertical" },
+    dishes: [
+      ["Attiéké com Peixe", "Polpa de mandioca fermentada e granulada — parecida com cuscuz — servida com peixe grelhado fresco, cebola e tomate. Prato símbolo do país.", "🥘", "attieke Ivory Coast cassava couscous grilled fish national dish"],
+      ["Kedjenou", "Galinha ou pintada cozida lentamente em panela de argila hermeticamente fechada, sem água. O molho natural concentrado é extraordinário. Prato nacional.", "🍗", "kedjenou Ivory Coast chicken clay pot slow cooked national traditional"],
+      ["Futu com Sopa de Amendoim", "Taro ou banana-da-terra cozida e socada, servida com sopa rica de amendoim e legumes. Comida de conforto das famílias ivorenses.", "🌿", "futu Ivory Coast pounded taro yam groundnut peanut soup stew"],
+      ["Aloco", "Banana-da-terra madura frita com cebola caramelizada e pimenta. Street food mais popular do país, onipresente nos maquis.", "🍌", "aloco Ivory Coast fried ripe plantain onion spicy street food maquis"],
+    ],
   },
   curacao: {
-    name: "Curacao", flag: "🇨🇼", group: "Grupo E",
+    name: "Curaçao", flag: "🇨🇼", group: "Grupo E",
     tagline: "A menor nacao da historia das Copas: 160 mil habitantes, 444 km2 e um licor azul famoso no mundo inteiro.",
     heroQuery: "Willemstad Curacao colorful colonial waterfront Punda harbor",
     portraitQuery: "Curacao Caribbean island beach turquoise coral",
@@ -1635,13 +1710,21 @@ const worldCup2026Profiles = {
       ["Flamingos ao Entardecer", "Flamingos Curacao sunset Jan Kok salt flats"],
     ],
     capital: "Willemstad",
+    facts: { capital: "Willemstad", population: "160 mil", language: "Papiamentu / Holandês / Inglês / Espanhol", currency: "Florim Antilhano (ANG)" },
+    footballStat: { titles: 0, player: "Leandro Bacuna", style: "Técnico e coletivo" },
+    dishes: [
+      ["Keshi Yena", "Casca de queijo Gouda ou Edam escavada e recheada com frango temperado com ameixas, alcaparras e especiarias, assada ao forno. Prato nacional nascido da criatividade dos escravizados.", "🧀", "keshi yena Curacao stuffed Gouda cheese chicken raisins capers national"],
+      ["Stoba di Kabritu", "Ensopado de cabra com abóbora e especiarias caribenhas, cozido lentamente. Prato de domingo nas casas curassauenses.", "🍲", "stoba kabritu Curacao goat stew pumpkin Caribbean traditional Sunday"],
+      ["Funchi", "Polenta de fubá, versão caribenha crioula, servida como acompanhamento com peixe ou ensopados. Base da dieta local desde o período colonial.", "🌽", "funchi Curacao cornmeal polenta Caribbean side dish creole traditional"],
+      ["Piska Kuminda", "Peixe fresco local — frequentemente red snapper ou grouper — grelhado com limão, alho e ervas frescas da ilha.", "🐟", "piska kuminda Curacao grilled fresh fish red snapper garlic Caribbean lime"],
+    ],
   },
 
   holanda: { name: "Holanda", flag: "🇳🇱", group: "Grupo F", tagline: "Canais, bicicletas, museus e uma escola de futebol criativa.", heroQuery: "Amsterdam Netherlands canals" },
-  japao: { name: "Japao", flag: "🇯🇵", group: "Grupo F", tagline: "Templos, tecnologia, gastronomia precisa e uma cultura visual inesquecivel.", heroQuery: "Tokyo Japan neon street" },
-  tunisia: { name: "Tunisia", flag: "🇹🇳", group: "Grupo F", tagline: "Mediterraneo, medinas, desertos e marcas antigas do norte da Africa.", heroQuery: "Tunisia Sidi Bou Said" },
+  japao: { name: "Japão", flag: "🇯🇵", group: "Grupo F", tagline: "Templos, tecnologia, gastronomia precisa e uma cultura visual inesquecivel.", heroQuery: "Tokyo Japan neon street" },
+  tunisia: { name: "Tunísia", flag: "🇹🇳", group: "Grupo F", tagline: "Mediterraneo, medinas, desertos e marcas antigas do norte da Africa.", heroQuery: "Tunisia Sidi Bou Said" },
   suecia: {
-    name: "Suecia", flag: "🇸🇪", group: "Grupo F",
+    name: "Suécia", flag: "🇸🇪", group: "Grupo F",
     tagline: "Inventores do Nobel, do IKEA e do cinto de seguranca: finalistas da Copa em 1958 e Zlatan como legado eterno.",
     heroQuery: "Stockholm Gamla Stan old town Sweden cobblestone houses",
     portraitQuery: "Sweden Northern Lights Lapland aurora borealis reindeer",
@@ -1679,11 +1762,19 @@ const worldCup2026Profiles = {
       ["Navio Vasa", "Vasa warship museum Stockholm Sweden interior"],
     ],
     capital: "Estocolmo",
+    facts: { capital: "Estocolmo", population: "10,5 milhões", language: "Sueco", currency: "Coroa Sueca (SEK)" },
+    footballStat: { titles: 0, firstTitle: "Vice em 1958", player: "Zlatan Ibrahimović", style: "Organizado e europeu" },
+    dishes: [
+      ["Köttbullar", "Almôndegas suecas com purê de batata, molho escuro e geleia de lingonberry. O prato mais reconhecível da Suécia, popularizado pelo IKEA globalmente.", "🍖", "Swedish meatballs kottbullar lingonberry potato puree IKEA classic"],
+      ["Gravlax", "Salmão curado com sal, açúcar e endro fresco. Servido fatiado fino com molho de mostarda e pão de centeio. Clássico nórdico de requinte.", "🐟", "gravlax Sweden cured salmon dill mustard sauce Nordic Scandinavian"],
+      ["Kanelbulle", "Pão de canela enrolado, suave e aromático. Consumido no ritual diário do fika — a pausa social para café e doce que define a cultura sueca.", "☕", "kanelbulle Swedish cinnamon bun roll fika coffee pastry tradition"],
+      ["Smörgåstårta", "Torta salgada feita de camadas de pão de forma recheadas com camarão, salmão defumado, pepino e ovo. Especial para festas e celebrações.", "🎂", "smorgastarta Sweden sandwich cake shrimp salmon egg party festive"],
+    ],
   },
 
-  belgica: { name: "Belgica", flag: "🇧🇪", group: "Grupo G", tagline: "Cidades medievais, chocolate, cervejas especiais e geracoes talentosas no futebol.", heroQuery: "Bruges Belgium canal" },
+  belgica: { name: "Bélgica", flag: "🇧🇪", group: "Grupo G", tagline: "Cidades medievais, chocolate, cervejas especiais e geracoes talentosas no futebol.", heroQuery: "Bruges Belgium canal" },
   ira: {
-    name: "Ira", flag: "🇮🇷", group: "Grupo G",
+    name: "Irã", flag: "🇮🇷", group: "Grupo G",
     tagline: "7000 anos de civilizacao persa: Persepolis, a Praca de Isfahan e 90% do acafrao mundial nascidos nesta terra antiga.",
     heroQuery: "Naqsh-e Jahan Square Isfahan Iran Safavid aerial",
     portraitQuery: "Persepolis Iran ancient ruins Achaemenid landscape",
@@ -1722,10 +1813,18 @@ const worldCup2026Profiles = {
       ["Ponte Si-o-se-pol", "Si-o-se-pol Bridge Isfahan Iran night reflection river"],
     ],
     capital: "Teera",
+    facts: { capital: "Teerã", population: "87 milhões", language: "Persa (Farsi)", currency: "Rial Iraniano (IRR)" },
+    footballStat: { titles: 0, player: "Ali Daei", style: "Disciplinado e organizado" },
+    dishes: [
+      ["Ghormeh Sabzi", "Ensopado aromático de ervas frescas — salsa, alho-poró e coentro — com feijão-vermelho, carne de cordeiro e limão seco. Considerado o prato nacional.", "🌿", "ghormeh sabzi Iran herb stew lamb kidney beans dried lime national"],
+      ["Chelo Kabab Koobideh", "Carne moída de cordeiro temperada com cebola e açafrão, grelhada em espetos largos e chatos. Servida sobre arroz branco perfumado com açafrão.", "🍢", "kabab koobideh Iran minced lamb skewer grilled saffron rice Persian"],
+      ["Fesenjan", "Frango ou pato cozido em molho rico de nozes moídas e melado de romã. Combinação único entre amargor e acidez, prato de celebração persa.", "🍗", "fesenjan Iran chicken duck walnut pomegranate molasses stew Persian"],
+      ["Ash-e Reshteh", "Sopa espessa de macarrão com lentilhas, feijão, espinafre e ervas, regada com kashk (coalhada seca) e cebola frita. Tradicional do Nowruz.", "🍜", "ash reshteh Iran noodle soup lentils herbs kashk Persian New Year"],
+    ],
   },
   egito: { name: "Egito", flag: "🇪🇬", group: "Grupo G", tagline: "Piramides, Nilo, Cairo e uma historia que moldou a imaginacao do mundo.", heroQuery: "Egypt pyramids Giza" },
   "nova-zelandia": {
-    name: "Nova Zelandia", flag: "🇳🇿", group: "Grupo G",
+    name: "Nova Zelândia", flag: "🇳🇿", group: "Grupo G",
     tagline: "Aotearoa: a terra da longa nuvem branca, onde a cultura maori e paisagens epicas definem uma nacao unica no Pacifico.",
     heroQuery: "Milford Sound Mitre Peak New Zealand fjord aerial",
     portraitQuery: "New Zealand South Island landscape mountains glacier",
@@ -1764,11 +1863,19 @@ const worldCup2026Profiles = {
       ["Hobbiton — Matamata", "Hobbiton movie set Matamata New Zealand Lord of the Rings"],
     ],
     capital: "Wellington",
+    facts: { capital: "Wellington", population: "5 milhões", language: "Inglês / Maori / Língua de Sinais NZ", currency: "Dólar Neozelandês (NZD)" },
+    footballStat: { titles: 0, player: "Shane Smeltz", style: "Defensivo e eficiente" },
+    dishes: [
+      ["Hangi", "Carnes, batata-doce kumara, batata, abóbora e outros vegetais embrulhados em folhas e cozidos lentamente sobre pedras quentes enterradas na terra. Técnica maori milenar.", "🔥", "hangi Maori New Zealand underground oven earth steam meat vegetables"],
+      ["Pavlova", "Merengue com casca crocante e interior macio, coberto com chantilly e kiwi fresco. A sobremesa nacional mais querida — disputada com a Austrália.", "🍰", "pavlova New Zealand meringue cream kiwi strawberry national dessert"],
+      ["Lamb Pie", "Pastel individual de massa quente recheado de cordeiro em molho gravy. Ícone das padarias e dos dias de futebol neozelandeses.", "🥧", "New Zealand lamb pie meat pastry gravy bakery pie floater"],
+      ["Whitebait Fritters", "Omelete delicada de minúsculos peixes brancos juvenis com ovo e salsa. Iguaria sazonal rara, disputada pelos neozelandeses na primavera.", "🐟", "whitebait fritters New Zealand tiny fish egg parsley delicacy spring seasonal"],
+    ],
   },
 
   espanha: { name: "Espanha", flag: "🇪🇸", group: "Grupo H", tagline: "Arquitetura, tapas, flamenco e uma escola de futebol tecnica e intensa.", heroQuery: "Barcelona Spain Sagrada Familia" },
   uruguai: { name: "Uruguai", flag: "🇺🇾", group: "Grupo H", tagline: "Praias tranquilas, mate, Montevideo e uma historia gigante em Copas.", heroQuery: "Montevideo Uruguay coast" },
-  "arabia-saudita": { name: "Arabia Saudita", flag: "🇸🇦", group: "Grupo H", tagline: "Deserto, cidades futuristas, patrimonio islamico e investimento crescente no futebol.", heroQuery: "Riyadh Saudi Arabia skyline" },
+  "arabia-saudita": { name: "Arábia Saudita", flag: "🇸🇦", group: "Grupo H", tagline: "Deserto, cidades futuristas, patrimonio islamico e investimento crescente no futebol.", heroQuery: "Riyadh Saudi Arabia skyline" },
   "cabo-verde": {
     name: "Cabo Verde", flag: "🇨🇻", group: "Grupo H",
     tagline: "Dez ilhas entre Africa e Atlantico, onde a morna ressoa no vento e o futebol ganhou o mundo em 2026.",
@@ -1809,9 +1916,17 @@ const worldCup2026Profiles = {
       ["Trilha em Santo Antao", "Santo Antao Cape Verde hiking trail green valley mountains"],
     ],
     capital: "Praia",
+    facts: { capital: "Praia", population: "560 mil", language: "Português (Crioulo Cabo-verdiano)", currency: "Escudo Cabo-verdiano (CVE)" },
+    footballStat: { titles: 0, player: "Nélson Semedo", style: "Aguerrido e atlético" },
+    dishes: [
+      ["Cachupa", "Guisado lento de milho grosso, feijão, batata, mandioca e carnes variadas — o prato nacional. Existe na versão pobre (só legumes) e rica (com chouriço, linguiça e carne bovina).", "🥘", "cachupa Cape Verde national dish corn beans stew hearty slow cooked"],
+      ["Lagosta Grelhada", "Lagosta do Atlântico grelhada com azeite, alho e limão. O arquipélago é famoso pela qualidade das suas lagostas, servidas em restaurantes com vista para o mar.", "🦞", "lobster grilled Cape Verde Atlantic ocean fresh seafood"],
+      ["Pastel com Diabo Dentro", "Bolinho de atum frito em forma de meia-lua, temperado com pimenta e ervas. O nome vem do ardor da pimenta que surpreende quem morde.", "🌶️", "pastel Cape Verde tuna fried pastry spicy snack street food"],
+      ["Grogue", "Aguardente de cana-de-açúcar produzida artesanalmente em Santo Antão desde o século XVII. A bebida nacional, consumida pura ou em ponche com mel e limão.", "🥃", "grogue Cape Verde sugarcane rum aguardente traditional spirit Santo Antao"],
+    ],
   },
 
-  franca: { name: "Franca", flag: "🇫🇷", group: "Grupo I", tagline: "Arte, moda, gastronomia refinada e uma geracao fortissima em Copas.", heroQuery: "Paris France Eiffel Tower" },
+  franca: { name: "França", flag: "🇫🇷", group: "Grupo I", tagline: "Arte, moda, gastronomia refinada e uma geracao fortissima em Copas.", heroQuery: "Paris France Eiffel Tower" },
   senegal: { name: "Senegal", flag: "🇸🇳", group: "Grupo I", tagline: "Musica, litoral, mercados, hospitalidade e orgulho africano em campo.", heroQuery: "Dakar Senegal coast" },
   noruega: {
     name: "Noruega", flag: "🇳🇴", group: "Grupo I",
@@ -1853,6 +1968,14 @@ const worldCup2026Profiles = {
       ["Aldeias de Flam", "Flamsbana Flam Norway railway scenic valley waterfall"],
     ],
     capital: "Oslo",
+    facts: { capital: "Oslo", population: "5,5 milhões", language: "Norueguês", currency: "Coroa Norueguesa (NOK)" },
+    footballStat: { titles: 0, player: "Erling Haaland", style: "Físico, transição rápida" },
+    dishes: [
+      ["Kjøttkaker", "Almôndegas caseiras de carne bovina e suína servidas com molho cremoso de carne, feijão-verde e purê de batata. O conforto da cozinha caseira norueguesa por excelência.", "🍖", "kjøttkaker Norwegian meatballs beef pork brown gravy comfort food"],
+      ["Rakfisk", "Truta ou char salgada e fermentada por meses sob pressão. Prato viking de preservação milenar, servido com cebola, creme azedo e flatbrød — de sabor muito intenso.", "🐟", "rakfisk Norway fermented trout fish traditional Viking preservation"],
+      ["Klippfisk / Bacalhau", "Bacalhau seco e salgado exportado para o mundo desde o século XV. Na Noruega é preparado à la Biscaia ou ao forno com batata, tomate e azeitonas.", "🧂", "klippfisk Norway dried salted cod bacalhau stockfish traditional"],
+      ["Skillingsbolle", "Caracol de canela fofo com açúcar de confeiteiro, parente escandinavo do kanelbulle sueco. Vendido em todas as padarias de Oslo e Bergen com café preto.", "🌀", "skillingsbolle Norway cinnamon roll pastry bakery Bergen bun sweet"],
+    ],
   },
   iraque: {
     name: "Iraque", flag: "🇮🇶", group: "Grupo I",
@@ -1894,11 +2017,19 @@ const worldCup2026Profiles = {
       ["Ur — Berco de Abraao", "Ur ancient city Sumerian ziggurat Abraham birthplace Iraq"],
     ],
     capital: "Bagda",
+    facts: { capital: "Bagdá", population: "45 milhões", language: "Árabe / Curdo", currency: "Dinar Iraquiano (IQD)" },
+    footballStat: { titles: 0, player: "Ahmed Radhi", style: "Paixão e identidade forte" },
+    dishes: [
+      ["Masgouf", "Carpa aberta ao meio, temperada com azeite, sal, cúrcuma e tamarindo, grelhada verticalmente em brasas de madeira de limoeiro pelo método tradicional iraquiano. O prato nacional e símbolo do Rio Tigre.", "🐟", "masgouf Iraq national dish grilled carp Tigris River Baghdad traditional"],
+      ["Dolma", "Folhas de videira, pimentão, abobrinha e berinjela recheados de carne moída e arroz com especiarias, cozidos em caldo de tomate com suco de romã. A versão iraquiana é considerada a mais sofisticada do Oriente Médio.", "🫑", "dolma Iraq stuffed vine leaves vegetables rice meat pomegranate Middle East"],
+      ["Quzi", "Cordeiro inteiro assado lentamente recheado de arroz, amêndoas, passas, nozes e especiarias. O prato festivo por excelência, servido em casamentos e celebrações especiais.", "🍖", "quzi Iraq whole roasted lamb rice nuts spices festive wedding celebration"],
+      ["Kleicha", "Biscoito de tâmaras ou coco com cardamomo, considerado o biscoito nacional do Iraque. Consumido no Eid e em celebrações, e preparado com amor pelas avós iraquianas.", "🍪", "kleicha Iraq date cookie national biscuit cardamom Eid celebration traditional"],
+    ],
   },
 
   argentina: { name: "Argentina", flag: "🇦🇷", group: "Grupo J", tagline: "Tango, Patagonia, Buenos Aires e uma paixao esportiva que atravessa geracoes.", heroQuery: "Buenos Aires Argentina skyline" },
   austria: {
-    name: "Austria", flag: "🇦🇹", group: "Grupo J",
+    name: "Áustria", flag: "🇦🇹", group: "Grupo J",
     tagline: "O coracao musical da Europa, entre pacos imperiais, Alpes nevados e uma heranca Habsburg que governou o continente por seculos.",
     heroQuery: "Schoenbrunn Palace Vienna Austria imperial baroque gardens aerial",
     portraitQuery: "Austrian Alps mountains landscape Tyrol snow",
@@ -1937,9 +2068,17 @@ const worldCup2026Profiles = {
       ["Viena ao Anoitecer", "Vienna skyline night Danube river Austria cityscape"],
     ],
     capital: "Viena",
+    facts: { capital: "Viena", population: "9 milhões", language: "Alemão", currency: "Euro (EUR)" },
+    footballStat: { titles: 0, firstTitle: "3° lugar em 1954", player: "David Alaba", style: "Pressão alta e organização" },
+    dishes: [
+      ["Wiener Schnitzel", "Escalope de vitela (ou porco) empanado e frito em óleo ou banha até dourar. O prato nacional austríaco, protegido por lei — só pode chamar-se 'Wiener' se feito com vitela.", "🥩", "Wiener Schnitzel Vienna veal cutlet breaded fried Austria national dish"],
+      ["Sachertorte", "Bolo de chocolate denso com camada de geléia de damasco e cobertura de ganache, criado pelo chef Franz Sacher em 1832 para o Príncipe Metternich. Servido com chantilly no Hotel Sacher.", "🍰", "Sachertorte Vienna chocolate cake apricot Hotel Sacher Austrian classic"],
+      ["Apfelstrudel", "Rolo de massa filo esticada à mão até ficar transparente, recheado de maçã fatiada, canela, passas e migalhas de pão. A sobremesa vienense mais icônica, servida morna com sorvete.", "🍎", "Apfelstrudel Austria apple strudel pastry cinnamon raisin traditional dessert"],
+      ["Tafelspitz", "Músculo ou coxão mole bovino cozido lentamente em caldo com raiz de aipo, cenoura e raiz-forte. O prato favorito do imperador Franz Joseph I, servido com molho de maçã e raiz-forte.", "🍲", "Tafelspitz Vienna boiled beef broth Emperor Franz Joseph imperial Austrian"],
+    ],
   },
   argelia: {
-    name: "Argelia", flag: "🇩🇿", group: "Grupo J",
+    name: "Argélia", flag: "🇩🇿", group: "Grupo J",
     tagline: "Do Mediterraneo ao Saara, a maior nacao africana guarda tesouros milenares entre dunas de areia e ruinas romanas excepcionais.",
     heroQuery: "Casbah Algiers UNESCO Algeria medina ancient streets",
     portraitQuery: "Sahara desert Algeria dunes landscape golden sunset",
@@ -1978,9 +2117,17 @@ const worldCup2026Profiles = {
       ["Costa Mediterranea", "Algeria Mediterranean coast Oran sea cliffs city"],
     ],
     capital: "Argel",
+    facts: { capital: "Argel", population: "45 milhões", language: "Árabe / Tamazight (Berbere)", currency: "Dinar Argelino (DZD)" },
+    footballStat: { titles: 0, firstTitle: "Campeão da Copa Africana 2019", player: "Riyad Mahrez", style: "Velocidade e contra-ataque" },
+    dishes: [
+      ["Couscous", "Sêmola de trigo cozida no vapor sobre um guisado de cordeiro, frango ou legumes com sete vegetais. A Argélia é o maior consumidor per capita do mundo e o couscous foi inscrito pela UNESCO em 2020.", "🫙", "couscous Algeria semolina lamb vegetables seven North Africa UNESCO traditional"],
+      ["Chorba Frik", "Sopa espessa de trigo verde triturado (frik) com cordeiro, tomate, grão-de-bico e coentro. O prato obrigatório de Ramadã para abrir o jejum, símbolo da culinária berbere-árabe.", "🍜", "chorba frik Algeria green wheat soup lamb tomato Ramadan traditional"],
+      ["Merguez", "Linguiça picante de cordeiro ou boi com harissa, páprica e alho, grelhada na brasa. Consumida em sanduíche num baguette crocante, herança da colonização francesa amalgamada à culinária magrebina.", "🌶️", "merguez Algeria spicy lamb sausage harissa grill North Africa street food"],
+      ["Makroud", "Losango de sêmola recheado de tâmaras ou pasta de amêndoa, frito e banhado em mel de flor de laranjeira. Doce tradicional de Biskra, consumido em festas e casamentos.", "🍯", "makroud Algeria semolina date pastry honey North Africa sweet traditional"],
+    ],
   },
   jordania: {
-    name: "Jordania", flag: "🇯🇴", group: "Grupo J",
+    name: "Jordânia", flag: "🇯🇴", group: "Grupo J",
     tagline: "Entre o Mar Morto e o deserto de Wadi Rum, a Jordania guarda Petra, a cidade rosa esculpida na rocha pelos nabateus — e disputa sua primeira Copa.",
     heroQuery: "Petra Treasury Al-Khazneh Jordan Nabataean rose red stone",
     portraitQuery: "Wadi Rum desert Jordan red sand rock formations landscape",
@@ -2019,11 +2166,19 @@ const worldCup2026Profiles = {
       ["Amman Antiga — Cidadela", "Amman citadel Jordan ancient Roman ruins city sunset"],
     ],
     capital: "Amã",
+    facts: { capital: "Amã", population: "10,5 milhões", language: "Árabe", currency: "Dinar Jordaniano (JOD)" },
+    footballStat: { titles: 0, player: "Musa Al-Taamari", style: "Organizado e crescente" },
+    dishes: [
+      ["Mansaf", "Cordeiro cozido em leite de cabra fermentado seco (jameed), servido sobre arroz e pão shrak com amêndoas e pinhões torrados. O prato nacional da Jordânia, símbolo de hospitalidade beduína.", "🍖", "mansaf Jordan national dish lamb jameed dried fermented milk rice Bedouin"],
+      ["Falafel", "Bolinhos fritos de grão-de-bico temperado com coentro, cominho e alho. Na Jordânia, o falafel do café da manhã em pão pita com tomate, salsa e tahine é uma tradição diária.", "🧆", "falafel Jordan chickpea fried breakfast pita tahini Middle East street food"],
+      ["Musakhan", "Frango assado com cebola caramelizada, sumaque e pinhões sobre fatia de pão taboon crocante. Um dos pratos mais amados da cozinha levantina, símbolo da colheita da azeitona.", "🫓", "musakhan Jordan chicken roasted caramelized onion sumac taboon bread Levant"],
+      ["Knafeh", "Camadas de massa kataifi ou semolina com queijo Nabulsi, banhadas em calda de água de rosas e cobertas de pistache triturado. A sobremesa mais famosa do Levante.", "🧀", "knafeh Jordan kanafeh cheese pastry rose water syrup pistachio Levant dessert"],
+    ],
   },
 
   portugal: { name: "Portugal", flag: "🇵🇹", group: "Grupo K", tagline: "Atlantico, azulejos, fado, vinhos e cidades historicas abertas ao mar.", heroQuery: "Lisbon Portugal city" },
   colombia: {
-    name: "Colombia", flag: "🇨🇴", group: "Grupo K",
+    name: "Colômbia", flag: "🇨🇴", group: "Grupo K",
     tagline: "O unico pais da America do Sul com costas no Pacifico e no Caribe, berco do cafe, das esmeraldas, do realismo magico e de Los Cafeteros.",
     heroQuery: "Cartagena Colombia colonial walled city Caribbean sea sunset",
     portraitQuery: "Colombia coffee region Cocora Valley wax palm trees Andes",
@@ -2062,9 +2217,17 @@ const worldCup2026Profiles = {
       ["Bogota Moderna e as Montanhas", "Bogota Colombia city skyline Andes mountains modern"],
     ],
     capital: "Bogota",
+    facts: { capital: "Bogotá", population: "52 milhões", language: "Espanhol", currency: "Peso Colombiano (COP)" },
+    footballStat: { titles: 0, player: "Carlos Valderrama", style: "Técnico, criativo e alegre" },
+    dishes: [
+      ["Bandeja Paisa", "O prato mais famoso da Colômbia: arroz, feijão vermelho, carne moída, chicharrón, ovo frito, chorizo, morcilla (chouriço de sangue), abacate e arepa numa única bandeja generosa da região de Antioquia.", "🍳", "bandeja paisa Colombia Antioquia rice beans pork fried egg chorizo avocado"],
+      ["Ajiaco Bogotano", "Sopa espessa da capital com três tipos de batata andina (criolla, pastusa e sabanera), frango desfiado, guascas (erva local) e milho, servida com creme de leite e alcaparras.", "🥣", "ajiaco Bogota Colombia chicken potato soup guascas cream capers Andean"],
+      ["Arepa", "Pão circular de milho branco ou amarelo grelhado na pedra ou na brasa. A base alimentar do colombiano, consumida no café da manhã, no almoço e no jantar, recheada ou simples.", "🫓", "arepa Colombia corn flatbread grilled breakfast staple national food"],
+      ["Sancocho de Gallina", "Sopa de galinha caipira com inhame, yuca, plátano verde, milho e ervas, cozida lentamente. Cada região da Colômbia tem sua versão; considerada remédio para ressaca e alimento da alma.", "🍲", "sancocho gallina Colombia chicken stew yuca plantain corn traditional soup"],
+    ],
   },
   uzbequistao: {
-    name: "Uzbequistao", flag: "🇺🇿", group: "Grupo K",
+    name: "Uzbequistão", flag: "🇺🇿", group: "Grupo K",
     tagline: "No coracao da Rota da Seda, Samarcanda e Bucara guardam os mais esplendidos monumentos islamicos da Asia Central — e o pais faz sua estreia mundial.",
     heroQuery: "Registan Square Samarkand Uzbekistan Timurid three madrasas tilework",
     portraitQuery: "Uzbekistan Silk Road landscape steppe blue dome architecture",
@@ -2103,6 +2266,14 @@ const worldCup2026Profiles = {
       ["Artesanato da Seda", "Uzbekistan silk ikat fabric weaving traditional craft colorful"],
     ],
     capital: "Tashkent",
+    facts: { capital: "Tashkent", population: "36 milhões", language: "Uzbeque", currency: "Som Uzbeque (UZS)" },
+    footballStat: { titles: 0, player: "Eldor Shomurodov", style: "Disciplinado e crescente" },
+    dishes: [
+      ["Plov", "Arroz de festa cozido com gordura de carneiro, cenoura amarela e vermelha, cebola, alho inteiro e especiarias numa panela de ferro kazan. O prato nacional do Uzbequistão, preparado por mestres chamados oshpaz para celebrações.", "🍚", "plov Uzbekistan rice lamb carrot kazan national dish Silk Road wedding"],
+      ["Samsa", "Pastel triangular de massa folhada recheado com carne de carneiro e cebola picada, cozido em forno de argila tandir. Vendido em bazares e padarias de todas as cidades uzbeques.", "🥟", "samsa Uzbekistan lamb pastry tandir clay oven market street food"],
+      ["Lagman", "Macarrão puxado à mão (esticado em filamentos longos) servido em caldo de carne e vegetais com tomate, pimentão e especiarias. Reflete a influência da Rota da Seda e da culinária chinesa.", "🍜", "lagman Uzbekistan hand pulled noodles lamb broth vegetables Silk Road"],
+      ["Shurva", "Sopa substancial de carneiro com batata, cenoura, cebola e tomate, cozida lentamente em caldeirão. O almoço cotidiano uzbeque, consumido com pão naan quente tirado do tandir.", "🍲", "shurva Uzbekistan lamb vegetable soup daily traditional bread naan"],
+    ],
   },
   "rd-congo": {
     name: "RD Congo", flag: "🇨🇩", group: "Grupo K",
@@ -2144,12 +2315,20 @@ const worldCup2026Profiles = {
       ["Mercado Colorido de Kinshasa", "Kinshasa market Congo colorful Africa street food vendors"],
     ],
     capital: "Kinshasa",
+    facts: { capital: "Kinshasa", population: "100+ milhões", language: "Francês / Lingala / Swahili / Kikongo", currency: "Franco Congolês (CDF)" },
+    footballStat: { titles: 0, firstTitle: "2× Campeão Africano (1968, 1974)", player: "Dieumerci Mbokani", style: "Físico e vibrante" },
+    dishes: [
+      ["Moambe", "Ensopado nacional de frango ou peixe cozido em pasta de nozes de dendê com folhas de mandioca, alho e especiarias locais. Servido com arroz ou fufu — o sabor mais representativo da cozinha congolesa.", "🥘", "moambe Congo national dish chicken palm nut stew cassava rice traditional"],
+      ["Fufu", "Massa densa feita de mandioca, banana-da-terra ou milho cozido e socado em pilão. Base alimentar de toda a África Central, consumida com as mãos e usada para recolher ensopados.", "🫙", "fufu Congo cassava pounded dough staple Central Africa traditional accompaniment"],
+      ["Saka Saka", "Folhas de mandioca trituradas e cozidas lentamente com carne defumada, amendoim e especiarias. Um dos pratos mais consumidos no cotidiano da RD Congo.", "🌿", "saka saka Congo cassava leaves ground beef smoked peanut traditional stew"],
+      ["Liboke", "Peixe ou frango marinado com especiarias e ervas, embrulhado e cozido lentamente dentro de folhas de bananeira. Técnica ancestral que preserva os aromas e sucos naturais.", "🐟", "liboke Congo fish chicken banana leaf wrapped steamed traditional cooking"],
+    ],
   },
 
   inglaterra: { name: "Inglaterra", flag: "🏴", group: "Grupo L", tagline: "Tradicao, estadios lendarios e cidades onde o futebol moderno ganhou forma.", heroQuery: "London England Big Ben" },
-  croacia: { name: "Croacia", flag: "🇭🇷", group: "Grupo L", tagline: "Litoral adriatico, cidades medievais e uma selecao de alma competitiva.", heroQuery: "Dubrovnik Croatia coast" },
+  croacia: { name: "Croácia", flag: "🇭🇷", group: "Grupo L", tagline: "Litoral adriatico, cidades medievais e uma selecao de alma competitiva.", heroQuery: "Dubrovnik Croatia coast" },
   panama: {
-    name: "Panama", flag: "🇵🇦", group: "Grupo L",
+    name: "Panamá", flag: "🇵🇦", group: "Grupo L",
     tagline: "Onde dois oceanos se encontram: o Canal do Panama une o mundo e a selva mais biodiversa da America Central floresce neste istmo estrategico.",
     heroQuery: "Panama Canal locks ships Miraflores Pacific Atlantic aerial view",
     portraitQuery: "Panama rainforest biodiversity tropical Bocas del Toro landscape",
@@ -2188,6 +2367,14 @@ const worldCup2026Profiles = {
       ["Fauna Panamenha — Tucano", "Panama wildlife toucan harpy eagle rainforest tropical colorful birds"],
     ],
     capital: "Cidade do Panama",
+    facts: { capital: "Cidade do Panamá", population: "4,4 milhões", language: "Espanhol", currency: "Balboa / Dólar Americano (PAB/USD)" },
+    footballStat: { titles: 0, player: "Felipe Baloy", style: "Organizado e combativo" },
+    dishes: [
+      ["Sancocho de Gallina", "Sopa de galinha caipira com nhame otoe, yuca, plátano verde, milho e culantro (erva aromática local). O prato mais amado do Panamá, consumido todo domingo em família.", "🍲", "sancocho gallina Panama chicken stew yuca otoe plantain culantro national"],
+      ["Ropa Vieja", "Carne bovina desfiada e cozida em molho de tomate, pimentão colorido, cebola, cominho e azeitonas verdes. Servida com arroz con coco e feijão frito — a herança cubana e espanhola no istmo.", "🥩", "ropa vieja Panama shredded beef tomato sauce pepper coconut rice traditional"],
+      ["Ceviche de Corvina", "Filé de corvina curado em suco de limão com cebola roxa, pimenta chombo (habanero), culantro e sal. A corvina fresca do Pacífico panamenho é considerada a melhor matéria-prima para ceviche.", "🐟", "ceviche corvina Panama Pacific fish lime onion habanero cilantro fresh"],
+      ["Patacón", "Rodela de banana-da-terra verde frita, amassada na tábua e frita novamente até crocante. Acompanhamento universal do Panamá, servido com guacamole, carne ou como base para sanduíches.", "🍌", "patacon Panama fried green plantain twice fried crispy traditional side dish"],
+    ],
   },
   gana: { name: "Gana", flag: "🇬🇭", group: "Grupo L", tagline: "Historia, musica, mercados, litoral e talento africano em campo.", heroQuery: "Accra Ghana city coast" },
 };

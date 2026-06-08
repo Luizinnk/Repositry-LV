@@ -9,10 +9,10 @@
   }
 
   filters.innerHTML = [
-    '<button class="filter-chip active" type="button" data-filter="all">Todos</button>',
+    '<button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">Todos</button>',
     ...groups.map(
       (group) =>
-        `<button class="filter-chip" type="button" data-filter="${group.id}">Grupo ${group.id}</button>`
+        `<button class="filter-chip" type="button" data-filter="${group.id}" aria-pressed="false">Grupo ${group.id}</button>`
     ),
   ].join("");
 
@@ -92,4 +92,62 @@
       `;
     })
     .join("");
+
+  // Outros Destinos: países com página mas sem grupo na Copa 2026
+  const extraSlugs = ["italia", "dinamarca", "servia", "chile", "camaroes", "polonia", "costa-rica"];
+  const extraCards = extraSlugs
+    .map((slug) => {
+      const country = countries[slug];
+      if (!country) return "";
+      const identity = country.identity || {};
+      const palette = identity.palette || ["#d7b56d", "#4da3ff", "#f5f7fa"];
+      const cardStyle = `--team-primary:${palette[0]};--team-secondary:${palette[1]};--team-accent:${palette[2]};`;
+      const curiosity = identity.curiosity || `Descubra ${identity.signature || country.tagline}`;
+
+      return `
+        <article class="country-card identity-country-card" style="${cardStyle}" data-country-name="${country.name}" data-flag-url="${identity.flagUrl || ""}">
+          <img class="country-photo" src="${country.hero}" data-web-image="${country.heroQuery}" alt="${country.name}" loading="lazy">
+          <div class="team-color-ribbon" aria-hidden="true">
+            ${palette.map((color) => `<i style="--swatch:${color}"></i>`).join("")}
+          </div>
+          <div class="country-body">
+            <div class="country-card-top">
+              <span class="flag flag-frame">
+                ${identity.flagUrl ? `<img src="${identity.flagUrl}" alt="Bandeira de ${country.name}" loading="lazy">` : ""}
+                <span>${country.flag}</span>
+              </span>
+              <small class="identity-tag">${identity.region || "Destino"}</small>
+            </div>
+            <h3>${country.name}</h3>
+            <p>${country.tagline}</p>
+            <div class="home-identity-line">
+              <span>${identity.symbol || "Identidade nacional"}</span>
+              <span>${identity.football || "Futebol e cultura"}</span>
+            </div>
+            <div class="curiosity-panel">
+              <b>Por que explorar?</b>
+              <span>${curiosity}</span>
+            </div>
+            <a class="country-link" href="${slug}.html"><span>Explorar país</span><i aria-hidden="true"></i></a>
+          </div>
+        </article>
+      `;
+    })
+    .filter(Boolean)
+    .join("");
+
+  if (extraCards) {
+    wrap.insertAdjacentHTML("beforeend", `
+      <section class="world-group reveal" data-group="outros" style="--group-primary:#6b7280;--group-secondary:#f5f7fa;--group-accent:#d7b56d;">
+        <div class="group-title">
+          <div>
+            <small class="group-kicker">Explore também</small>
+            <span>Outros Destinos</span>
+          </div>
+          <p>Países com página completa no atlas — cultura, turismo, gastronomia e futebol.</p>
+        </div>
+        <div class="country-grid">${extraCards}</div>
+      </section>
+    `);
+  }
 })();

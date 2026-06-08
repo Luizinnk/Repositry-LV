@@ -8,14 +8,62 @@
 
   if (!root || !country) return;
 
+  const baseUrl = "https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/";
+  const pageUrl = `${baseUrl}${slug}.html`;
+  const metaDesc = `${country.name}: turismo, cultura, gastronomia, história e futebol — Copa do Mundo 2026.`;
+
   document.title = `${country.name} | VIAJEIO O MUNDO`;
+
   const description = document.querySelector('meta[name="description"]');
-  if (description) {
-    description.setAttribute(
-      "content",
-      `${country.name}: turismo, cultura, gastronomia, história e futebol — Copa 2026.`
-    );
+  if (description) description.setAttribute("content", metaDesc);
+
+  // Canonical
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    document.head.appendChild(canonical);
   }
+  canonical.href = pageUrl;
+
+  // Open Graph
+  const ogMetas = {
+    "og:title":       `${country.name} — VIAJEIO O MUNDO`,
+    "og:description": metaDesc,
+    "og:url":         pageUrl,
+    "og:type":        "website",
+    "og:image":       country.hero || `${baseUrl}img/logo.png`,
+  };
+  Object.entries(ogMetas).forEach(([prop, content]) => {
+    let el = document.querySelector(`meta[property="${prop}"]`);
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute("property", prop);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  });
+
+  // JSON-LD
+  const existingLd = document.querySelector('script[type="application/ld+json"]');
+  const ldScript = existingLd || document.createElement("script");
+  ldScript.type = "application/ld+json";
+  ldScript.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": country.name,
+    "description": metaDesc,
+    "url": pageUrl,
+    "inLanguage": "pt-BR",
+    "image": country.hero || `${baseUrl}img/logo.png`,
+    "touristType": ["Turismo Cultural", "Turismo Esportivo"],
+    "includesAttraction": (country.spots || []).slice(0, 3).map((s) => ({
+      "@type": "TouristAttraction",
+      "name": s.title,
+      "description": s.text,
+    })),
+  });
+  if (!existingLd) document.head.appendChild(ldScript);
 
   const identity = country.identity || {};
   const palette = identity.palette || ["#d7b56d", "#4da3ff", "#f5f7fa"];

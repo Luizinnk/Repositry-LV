@@ -57,8 +57,12 @@ filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
 
-    filterButtons.forEach((item) => item.classList.remove("active"));
+    filterButtons.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
 
     groups.forEach((group) => {
       const shouldShow = filter === "all" || group.dataset.group === filter;
@@ -184,45 +188,57 @@ function inferCardImageQuery(img) {
   return img.dataset.webImage || [title, img.alt].filter(Boolean).join(" ");
 }
 
+async function hydrateImg(img) {
+  const query = inferCardImageQuery(img);
+  if (!query || img.dataset.webResolved === "true") return;
+  img.dataset.webResolved = "true";
+  try {
+    img.src = await resolveWebImage(query, 1100);
+  } catch (err) {
+    img.dataset.webResolved = "fallback";
+    console.warn("[viajeio] Imagem não encontrada:", query, err?.message);
+  }
+}
+
+async function hydrateBg(element) {
+  const query = element.dataset.bgQuery;
+  if (!query || element.dataset.webResolved === "true") return;
+  element.dataset.webResolved = "true";
+  try {
+    const image = await resolveWebImage(query, 1800);
+    const property = element.classList.contains("country-hero") ? "--hero-image" : "--feature-image";
+    element.style.setProperty(property, `url("${image}")`);
+  } catch (err) {
+    element.dataset.webResolved = "fallback";
+    console.warn("[viajeio] Fundo não encontrado:", query, err?.message);
+  }
+}
+
 function hydrateWebImages() {
-  const imageTargets = [...document.querySelectorAll("img[data-web-image]")];
-  const backgroundTargets = [...document.querySelectorAll("[data-bg-query]")];
-
-  Promise.allSettled(
-    imageTargets.map(async (img) => {
-      const query = inferCardImageQuery(img);
-      if (!query || img.dataset.webResolved === "true") return;
-
-      img.dataset.webResolved = "true";
-
-      try {
-        img.src = await resolveWebImage(query, 1100);
-      } catch (err) {
-        img.dataset.webResolved = "fallback";
-        console.warn("[viajeio] Imagem não encontrada:", query, err?.message);
-      }
-    })
+  const imgObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        hydrateImg(entry.target);
+      });
+    },
+    { rootMargin: "200px 0px" }
   );
 
-  Promise.allSettled(
-    backgroundTargets.map(async (element) => {
-      const query = element.dataset.bgQuery;
-      if (!query || element.dataset.webResolved === "true") return;
-
-      element.dataset.webResolved = "true";
-
-      try {
-        const image = await resolveWebImage(query, 1800);
-        const property = element.classList.contains("country-hero")
-          ? "--hero-image"
-          : "--feature-image";
-        element.style.setProperty(property, `url("${image}")`);
-      } catch (err) {
-        element.dataset.webResolved = "fallback";
-        console.warn("[viajeio] Fundo não encontrado:", query, err?.message);
-      }
-    })
+  const bgObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        hydrateBg(entry.target);
+      });
+    },
+    { rootMargin: "200px 0px" }
   );
+
+  document.querySelectorAll("img[data-web-image]").forEach((img) => imgObserver.observe(img));
+  document.querySelectorAll("[data-bg-query]").forEach((el) => bgObserver.observe(el));
 }
 
 hydrateWebImages();

@@ -1,25 +1,25 @@
 /* ============================================================
-   VIAJEIO O MUNDO — Homepage  |  Design System v4 · Premium Dark Editorial
+   VIAJEIO O MUNDO — Homepage  |  Design System v5 · Copa do Mundo 2026
    ============================================================ */
 
-/* ── Google Fonts ────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap');
-
-/* ── Design Tokens ───────────────────────────────────────── */
+/* ── Design Tokens — Copa do Mundo 2026 ──────────────────── */
 :root {
-  --bg:        #0d0b09;
-  --surface:   #161210;
-  --surface-2: #1e1b18;
-  --surface-3: #252220;
-  --text:      #f0ebe3;
-  --text-2:    #6e6760;
-  --text-3:    #a89e96;
-  --accent:    #c9a85c;
-  --accent-hi: #e0c070;
-  --accent-lo: rgba(201, 168, 92, 0.12);
-  --accent-bd: rgba(201, 168, 92, 0.30);
-  --border:    rgba(255, 255, 255, 0.06);
-  --border-2:  rgba(255, 255, 255, 0.11);
+  --bg:        #080c18;   /* navy profundo — estádio à noite */
+  --surface:   #0e1325;
+  --surface-2: #141b33;
+  --surface-3: #1a2340;
+  --text:      #edf1fa;
+  --text-2:    #68789c;
+  --text-3:    #9daabb;
+  --accent:    #f5c118;   /* ouro da taça — vibrant */
+  --accent-hi: #f7d148;
+  --accent-lo: rgba(245, 193, 24, 0.12);
+  --accent-bd: rgba(245, 193, 24, 0.28);
+  --border:    rgba(255, 255, 255, 0.07);
+  --border-2:  rgba(255, 255, 255, 0.13);
+  --copa-green: #00c96a;  /* gramado */
+  --copa-blue:  #3d6ef5;  /* championship blue */
+  --copa-red:   #e5383b;  /* energy */
   --r-sm: 6px;
   --r:    12px;
   --r-lg: 20px;
@@ -41,16 +41,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle top gold glow line */
+/* Linha Copa no topo — verde → ouro → verde */
 body::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.25;
+  height: 2px;
+  background: linear-gradient(90deg, var(--copa-green), var(--accent), var(--copa-green));
+  opacity: 0.3;
   z-index: 1000;
   pointer-events: none;
 }
@@ -125,7 +125,7 @@ p  { color: var(--text-3); line-height: 1.72; }
   display: block;
   width: 32px;
   height: 2px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--copa-green), var(--accent));
   margin-bottom: 1rem;
   border-radius: 2px;
 }
@@ -148,7 +148,7 @@ p  { color: var(--text-3); line-height: 1.72; }
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  background: rgba(13, 11, 9, 0.85);
+  background: rgba(8, 12, 24, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -156,7 +156,7 @@ p  { color: var(--text-3); line-height: 1.72; }
 }
 
 .site-header.scrolled {
-  background: rgba(13, 11, 9, 0.97);
+  background: rgba(8, 12, 24, 0.97);
   border-bottom-color: var(--border-2);
 }
 
@@ -221,7 +221,7 @@ p  { color: var(--text-3); line-height: 1.72; }
 .hero-media {
   position: absolute;
   inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=2200&q=85");
+  background-image: url("https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=2200&q=85");
   background-size: cover;
   background-position: center 30%;
   animation: heroZoom 18s ease-in-out infinite alternate;
@@ -238,10 +238,9 @@ p  { color: var(--text-3); line-height: 1.72; }
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(13, 11, 9, 0.30) 0%,
-    rgba(13, 11, 9, 0.52) 40%,
-    rgba(13, 11, 9, 0.88) 75%,
-    rgba(13, 11, 9, 0.98) 100%
+    rgba(8, 12, 24, 0.38) 0%,
+    rgba(8, 12, 24, 0.70) 55%,
+    rgba(8, 12, 24, 0.97) 100%
   );
 }
 
@@ -256,22 +255,32 @@ p  { color: var(--text-3); line-height: 1.72; }
 .hero-brand-logo { display: none; }
 .hero-dashboard   { display: none !important; }
 
+/* Eyebrow no hero usa verde Copa */
 .hero-content .eyebrow {
   justify-content: center;
   font-size: 0.72rem;
   margin-bottom: 1.1rem;
-  color: var(--accent);
+  color: var(--copa-green);
 }
 
+.hero-content .eyebrow::before {
+  background: var(--copa-green);
+}
+
+/* h1 com gradiente Copa: branco → ouro → verde */
 .hero-content h1 {
   margin-bottom: 1.2rem;
   letter-spacing: -0.04em;
   line-height: 0.95;
+  background: linear-gradient(135deg, #ffffff 0%, #f5c118 55%, #00c96a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
-  color: rgba(240, 235, 227, 0.68);
+  color: rgba(237, 241, 250, 0.68);
   max-width: 540px;
   margin: 0 auto 2.75rem;
   line-height: 1.7;
@@ -285,15 +294,15 @@ p  { color: var(--text-3); line-height: 1.72; }
   margin-bottom: 2.75rem;
 }
 
-/* Live bar pills */
+/* Live bar pills — mais visível e Copa */
 .cup-livebar {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid var(--border-2);
+  border: 1px solid rgba(245, 193, 24, 0.2);
   border-radius: 100px;
   overflow: hidden;
-  background: rgba(13, 11, 9, 0.5);
+  background: rgba(8, 12, 24, 0.65);
   backdrop-filter: blur(8px);
 }
 
@@ -368,24 +377,24 @@ p  { color: var(--text-3); line-height: 1.72; }
 
 .btn-primary {
   background: var(--accent);
-  color: #0d0b09;
+  color: #080c18;
 }
 
 .btn-primary:hover {
   background: var(--accent-hi);
   transform: translateY(-1px);
-  box-shadow: 0 0 32px rgba(201, 168, 92, 0.3), 0 8px 24px rgba(201, 168, 92, 0.18);
+  box-shadow: 0 0 28px rgba(245, 193, 24, 0.35), 0 8px 24px rgba(245, 193, 24, 0.18);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--text);
-  border: 1px solid var(--border-2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -468,7 +477,7 @@ p  { color: var(--text-3); line-height: 1.72; }
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
+  background: linear-gradient(90deg, var(--copa-green), var(--accent));
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -483,6 +492,11 @@ p  { color: var(--text-3); line-height: 1.72; }
   color: var(--accent);
   line-height: 1;
   letter-spacing: -0.04em;
+}
+
+/* Smooth counter animation */
+.metric-card[data-counted="true"] strong {
+  transition: all 0.5s var(--ease);
 }
 
 .metric-card span {
@@ -536,7 +550,7 @@ p  { color: var(--text-3); line-height: 1.72; }
 
 .filter-chip.active {
   background: var(--accent);
-  color: #0d0b09;
+  color: #080c18;
   border-color: transparent;
 }
 
@@ -547,7 +561,7 @@ p  { color: var(--text-3); line-height: 1.72; }
   border-left: 3px solid var(--group-primary, var(--accent));
   border-radius: var(--r-lg);
   overflow: hidden;
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
   transition: border-color 0.25s;
 }
 
@@ -575,6 +589,7 @@ p  { color: var(--text-3); line-height: 1.72; }
   color: var(--text-2);
 }
 
+/* "Grupo X" com cor primária do grupo */
 .group-title > div > span {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.08rem;
@@ -663,7 +678,7 @@ p  { color: var(--text-3); line-height: 1.72; }
 .country-card:hover {
   background: var(--surface-2);
   transform: translateY(-3px);
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.55);
   z-index: 2;
 }
 
@@ -831,7 +846,7 @@ p  { color: var(--text-3); line-height: 1.72; }
 .country-link:hover {
   background: var(--team-primary, var(--accent));
   border-color: transparent;
-  color: #0d0b09;
+  color: #080c18;
 }
 .country-link i::after {
   content: '→';
@@ -879,13 +894,18 @@ p  { color: var(--text-3); line-height: 1.72; }
   font-weight: 700;
   font-size: 0.84rem;
   letter-spacing: 0.08em;
-  color: var(--text);
+  background: linear-gradient(90deg, var(--text) 0%, var(--text-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .site-footer > span img {
   width: 22px;
   height: 22px;
   object-fit: contain;
+  /* imagem não herda text-fill, então reseta */
+  -webkit-text-fill-color: initial;
 }
 
 .site-footer > p {
@@ -900,7 +920,7 @@ p  { color: var(--text-3); line-height: 1.72; }
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(13, 11, 9, 0.96);
+  background: rgba(8, 12, 24, 0.96);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1027,7 +1047,7 @@ p  { color: var(--text-3); line-height: 1.72; }
     flex-direction: column;
     position: fixed;
     top: 54px; left: 0; right: 0;
-    background: rgba(13, 11, 9, 0.98);
+    background: rgba(8, 12, 24, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 0.75rem 1.1rem;

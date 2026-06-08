@@ -8,19 +8,22 @@
 
 /* ── Design Tokens ──────────────────────────────────────── */
 :root {
-  --bg:        #0d0b09;
-  --surface:   #161210;
-  --surface-2: #1e1b18;
-  --surface-3: #252220;
-  --text:      #f0ebe3;
-  --text-2:    #6e6760;
-  --text-3:    #a89e96;
-  --accent:    #c9a85c;
-  --accent-hi: #e0c070;
-  --accent-lo: rgba(201, 168, 92, 0.12);
-  --accent-bd: rgba(201, 168, 92, 0.30);
-  --border:    rgba(255, 255, 255, 0.06);
-  --border-2:  rgba(255, 255, 255, 0.11);
+  --bg:        #080c18;   /* navy profundo — estádio à noite */
+  --surface:   #0e1325;
+  --surface-2: #141b33;
+  --surface-3: #1a2340;
+  --text:      #edf1fa;
+  --text-2:    #68789c;
+  --text-3:    #9daabb;
+  --accent:    #f5c118;   /* ouro da taça Copa */
+  --accent-hi: #f7d148;
+  --accent-lo: rgba(245, 193, 24, 0.12);
+  --accent-bd: rgba(245, 193, 24, 0.28);
+  --border:    rgba(255, 255, 255, 0.07);
+  --border-2:  rgba(255, 255, 255, 0.13);
+  --copa-green: #00c96a;
+  --copa-blue:  #3d6ef5;
+  --copa-red:   #e5383b;
   --r-sm: 6px;
   --r:    12px;
   --r-lg: 20px;
@@ -28,9 +31,9 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Team palette — overridden per-country by country-page.js */
-  --team-primary:   #c9a85c;
-  --team-secondary: #4da3ff;
-  --team-accent:    #f5f7fa;
+  --team-primary:   #f5c118;
+  --team-secondary: #3d6ef5;
+  --team-accent:    #edf1fa;
 }
 
 /* ── Reset ───────────────────────────────────────────────── */

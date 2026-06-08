@@ -54,6 +54,44 @@ filterButtons.forEach((button) => {
   });
 });
 
+/* ── Counter animation for metric cards ──────────────────── */
+function animateCounter(el, target, suffix) {
+  const duration = 1600;
+  const startTime = performance.now();
+
+  function tick(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease-out cubic — accelera no começo, desacelera no fim
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(target * eased) + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+}
+
+const counterCards = document.querySelectorAll(".metric-card[data-target]");
+if (counterCards.length) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target;
+        if (card.dataset.counted) return;
+        card.dataset.counted = "true";
+        const target = parseInt(card.dataset.target, 10);
+        const suffix = card.dataset.target === "100" ? "%" : "";
+        const strong = card.querySelector("strong");
+        if (strong) animateCounter(strong, target, suffix);
+        counterObserver.unobserve(card);
+      });
+    },
+    { threshold: 0.6 }
+  );
+  counterCards.forEach((card) => counterObserver.observe(card));
+}
+
 const WEB_IMAGE_CACHE = "viajeio:web-image:";
 
 function readImageCache(key) {
@@ -75,7 +113,7 @@ function writeImageCache(key, value) {
 async function fetchJson(url) {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Image source failed: ${response.status}`);
+    throw new Error(`HTTP ${response.status} ao buscar: ${url}`);
   }
   return response.json();
 }
@@ -109,18 +147,22 @@ async function resolveWebImage(query, size = 1200) {
     // Fallback abaixo: Wikipedia page images.
   }
 
-  const wikipedia = await fetchJson(wikipediaUrl);
-  const wikipediaPages = Object.values(wikipedia.query?.pages || {});
-  const wikipediaImage = wikipediaPages
-    .map((page) => page.thumbnail?.source)
-    .find(Boolean);
+  try {
+    const wikipedia = await fetchJson(wikipediaUrl);
+    const wikipediaPages = Object.values(wikipedia.query?.pages || {});
+    const wikipediaImage = wikipediaPages
+      .map((page) => page.thumbnail?.source)
+      .find(Boolean);
 
-  if (!wikipediaImage) {
-    throw new Error(`No image found for ${normalized}`);
+    if (wikipediaImage) {
+      writeImageCache(cacheKey, wikipediaImage);
+      return wikipediaImage;
+    }
+  } catch {
+    // Ambas as fontes falharam.
   }
 
-  writeImageCache(cacheKey, wikipediaImage);
-  return wikipediaImage;
+  throw new Error(`Imagem não encontrada para: ${normalized}`);
 }
 
 function inferCardImageQuery(img) {
@@ -130,38 +172,44 @@ function inferCardImageQuery(img) {
 }
 
 function hydrateWebImages() {
-  const imageTargets = document.querySelectorAll("img[data-web-image]");
-  const backgroundTargets = document.querySelectorAll("[data-bg-query]");
+  const imageTargets = [...document.querySelectorAll("img[data-web-image]")];
+  const backgroundTargets = [...document.querySelectorAll("[data-bg-query]")];
 
-  imageTargets.forEach(async (img) => {
-    const query = inferCardImageQuery(img);
-    if (!query || img.dataset.webResolved === "true") return;
+  Promise.allSettled(
+    imageTargets.map(async (img) => {
+      const query = inferCardImageQuery(img);
+      if (!query || img.dataset.webResolved === "true") return;
 
-    img.dataset.webResolved = "true";
+      img.dataset.webResolved = "true";
 
-    try {
-      img.src = await resolveWebImage(query, 1100);
-    } catch {
-      img.dataset.webResolved = "fallback";
-    }
-  });
+      try {
+        img.src = await resolveWebImage(query, 1100);
+      } catch (err) {
+        img.dataset.webResolved = "fallback";
+        console.warn("[viajeio] Imagem não encontrada:", query, err?.message);
+      }
+    })
+  );
 
-  backgroundTargets.forEach(async (element) => {
-    const query = element.dataset.bgQuery;
-    if (!query || element.dataset.webResolved === "true") return;
+  Promise.allSettled(
+    backgroundTargets.map(async (element) => {
+      const query = element.dataset.bgQuery;
+      if (!query || element.dataset.webResolved === "true") return;
 
-    element.dataset.webResolved = "true";
+      element.dataset.webResolved = "true";
 
-    try {
-      const image = await resolveWebImage(query, 1800);
-      const property = element.classList.contains("country-hero")
-        ? "--hero-image"
-        : "--feature-image";
-      element.style.setProperty(property, `url("${image}")`);
-    } catch {
-      element.dataset.webResolved = "fallback";
-    }
-  });
+      try {
+        const image = await resolveWebImage(query, 1800);
+        const property = element.classList.contains("country-hero")
+          ? "--hero-image"
+          : "--feature-image";
+        element.style.setProperty(property, `url("${image}")`);
+      } catch (err) {
+        element.dataset.webResolved = "fallback";
+        console.warn("[viajeio] Fundo não encontrado:", query, err?.message);
+      }
+    })
+  );
 }
 
 hydrateWebImages();
@@ -242,3 +290,26 @@ document.addEventListener("click", (event) => {
     window.location.href = href;
   }, 760);
 });
+
+// Destaque de seção ativa no anchor-nav das páginas de país
+(function initAnchorNav() {
+  const anchorLinks = document.querySelectorAll(".anchor-nav a[href^='#']");
+  if (!anchorLinks.length) return;
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          anchorLinks.forEach((a) => a.classList.remove("active"));
+          const active = [...anchorLinks].find(
+            (a) => a.getAttribute("href") === `#${entry.target.id}`
+          );
+          if (active) active.classList.add("active");
+        }
+      });
+    },
+    { rootMargin: "-25% 0px -65% 0px" }
+  );
+
+  document.querySelectorAll("section[id]").forEach((s) => sectionObserver.observe(s));
+})();

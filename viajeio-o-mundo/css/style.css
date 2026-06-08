@@ -642,115 +642,141 @@ p  { color: var(--text-3); line-height: 1.72; }
   background: var(--border);
 }
 
-/* ── Country card ────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   COUNTRY CARD  —  Passport / Flag-forward style
+   Layout: photo strip (80px) → team ribbon → flag + info
+════════════════════════════════════════════════════════════ */
 .country-card {
   position: relative;
   background: var(--surface);
   overflow: hidden;
-  transition: background 0.24s var(--ease), transform 0.24s var(--ease);
-  cursor: pointer;
   border-top: 4px solid var(--team-primary, var(--accent));
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  transition: transform 0.24s var(--ease),
+              box-shadow 0.24s var(--ease),
+              background 0.24s var(--ease);
+  cursor: pointer;
 }
 
 .country-card:hover {
   background: var(--surface-2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
   z-index: 2;
 }
 
-/* Identity card variant (same styles, already covered by .country-card) */
 .identity-country-card {}
-
 .card-number { display: none; }
 
+/* ── Atmospheric photo strip (short, tinted) ─────────────── */
 .country-photo {
   width: 100%;
-  height: 200px;
+  height: 96px;
   object-fit: cover;
+  object-position: center 35%;
   display: block;
-  filter: brightness(0.85) saturate(0.88);
-  transition: transform 0.5s var(--ease), filter 0.35s var(--ease);
+  flex-shrink: 0;
+  filter: brightness(0.65) saturate(0.70);
+  transition: transform 0.55s var(--ease), filter 0.35s var(--ease);
 }
-
 .country-card:hover .country-photo {
-  transform: scale(1.06);
-  filter: brightness(1) saturate(1);
+  transform: scale(1.08);
+  filter: brightness(0.85) saturate(0.95);
 }
 
+/* ── Three-colour team ribbon ────────────────────────────── */
 .team-color-ribbon {
   display: flex;
-  height: 4px;
+  height: 5px;
   flex-shrink: 0;
 }
-
 .team-color-ribbon i {
   flex: 1;
   display: block;
   background: var(--swatch, var(--accent));
 }
 
+/* ── Card body ───────────────────────────────────────────── */
 .country-body {
-  padding: 1rem 1rem 0.9rem;
+  padding: 0.9rem 0.9rem 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.42rem;
+  gap: 0.38rem;
+  flex: 1;
 }
 
+/* ── Top row: flag (prominent) + region tag ──────────────── */
 .country-card-top {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.1rem;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.45rem;
 }
 
 .flag { display: inline-flex; }
 
+/* Flag frame — large, with subtle shadow + team-colour glow */
 .flag-frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 22px;
-  border-radius: 3px;
+  width: 56px;
+  height: 40px;
+  border-radius: 5px;
   overflow: hidden;
-  border: 1px solid var(--border-2);
-  background: var(--surface-2);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: var(--surface-3);
   flex-shrink: 0;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-
+.country-card:hover .flag-frame {
+  border-color: rgba(255, 255, 255, 0.30);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.3),
+    0 0 12px -2px var(--team-primary, var(--accent));
+}
 .flag-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
 .flag-frame > span {
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1;
 }
 
+/* Region / group tag */
 .identity-tag {
-  font-size: 0.6rem;
+  font-size: 0.57rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--text-2);
+  padding-top: 3px;
+  line-height: 1.4;
 }
 
+/* ── Country name ────────────────────────────────────────── */
 .country-card h3 {
-  font-size: 0.94rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* ── Tagline ─────────────────────────────────────────────── */
 .country-body > p {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--text-2);
   line-height: 1.45;
   display: -webkit-box;
@@ -760,27 +786,26 @@ p  { color: var(--text-3); line-height: 1.72; }
   margin: 0;
 }
 
+/* ── Identity pills ──────────────────────────────────────── */
 .home-identity-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.28rem;
+  gap: 0.25rem;
   margin-top: 0.1rem;
 }
-
 .home-identity-line span {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   color: var(--text-2);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
-  padding: 0.13rem 0.48rem;
+  padding: 0.12rem 0.46rem;
   border-radius: 100px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 130px;
+  max-width: 120px;
   transition: border-color 0.15s, color 0.15s;
 }
-
 .country-card:hover .home-identity-line span {
   border-color: var(--border-2);
   color: var(--text-3);
@@ -788,37 +813,34 @@ p  { color: var(--text-3); line-height: 1.72; }
 
 .curiosity-panel { display: none; }
 
-/* Country link button */
+/* ── Explore link (pushed to bottom) ────────────────────── */
 .country-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0.6rem;
+  margin-top: auto;
   padding: 0.52rem 0.75rem;
   background: var(--accent-lo);
   border: 1px solid var(--accent-bd);
   border-radius: var(--r-sm);
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   font-weight: 600;
   color: var(--accent);
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-
 .country-link:hover {
   background: var(--team-primary, var(--accent));
   border-color: transparent;
   color: #0d0b09;
 }
-
 .country-link i::after {
   content: '→';
   font-style: normal;
   transition: transform 0.2s;
   display: inline-block;
 }
-
 .country-link:hover i::after {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 /* ══════════════════════════════════════════════════════════

@@ -1430,3 +1430,242 @@ p  { color: var(--text-3); line-height: 1.72; }
     text-align: center;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   FACTS STRIP  —  Capital · Populacao · Idioma · Moeda
+══════════════════════════════════════════════════════════ */
+.country-facts-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.fact-chip {
+  flex: 1 1 160px;
+  background: var(--surface);
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  transition: background 0.18s;
+}
+.fact-chip:hover { background: var(--surface-2); }
+
+.fact-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35));
+}
+
+.fact-chip b {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.fact-chip p {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.2;
+  margin: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   DISH GRID  —  Gastronomia com cards visuais
+══════════════════════════════════════════════════════════ */
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.dish-card {
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s;
+  cursor: default;
+}
+.dish-card:hover { background: var(--surface-2); }
+
+.dish-card img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.82) saturate(0.88);
+  transition: filter 0.35s, transform 0.45s var(--ease);
+}
+.dish-card:hover img {
+  filter: brightness(1) saturate(1.05);
+  transform: scale(1.04);
+}
+
+/* Overflow clip for the image inside the card */
+.dish-card {
+  overflow: hidden;
+}
+
+.dish-card-body {
+  padding: 0.9rem 1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.dish-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+
+.dish-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.dish-card p {
+  font-size: 0.74rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   CURIOSITY GRID  —  Cards numerados de curiosidades
+══════════════════════════════════════════════════════════ */
+.curiosity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.curiosity-card {
+  background: var(--surface);
+  padding: 1.4rem 1.3rem 1.4rem 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: background 0.18s;
+}
+.curiosity-card:hover { background: var(--surface-2); }
+
+.curiosity-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--team-primary, var(--accent));
+  opacity: 0.45;
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -0.03em;
+  min-width: 2.4rem;
+  transition: opacity 0.18s;
+}
+.curiosity-card:hover .curiosity-num { opacity: 0.75; }
+
+.curiosity-card p {
+  font-size: 0.875rem;
+  color: var(--text-3);
+  line-height: 1.62;
+  margin: 0;
+  padding-top: 0.2rem;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   FOOTBALL STATS ROW
+══════════════════════════════════════════════════════════ */
+.football-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.fstat-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r);
+  padding: 0.95rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 100px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.fstat-card.fstat-wide { min-width: 160px; }
+
+.fstat-card strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.fstat-card span {
+  font-size: 0.63rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE UPDATES para novos componentes
+══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .country-facts-strip { flex-wrap: wrap; }
+  .fact-chip { flex: 1 1 140px; }
+  .dish-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .curiosity-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .country-facts-strip { flex-direction: row; overflow-x: auto; flex-wrap: nowrap; }
+  .fact-chip { flex: 0 0 140px; padding: 0.85rem 1rem; }
+
+  .dish-grid { grid-template-columns: 1fr 1fr; }
+  .dish-card img { height: 110px; }
+
+  .football-stats-row { gap: 0.5rem; }
+  .fstat-card { min-width: 80px; padding: 0.75rem 1rem; }
+  .fstat-card strong { font-size: 1.1rem; }
+}
+
+@media (max-width: 400px) {
+  .dish-grid { grid-template-columns: 1fr; }
+  .curiosity-num { font-size: 1.4rem; }
+}

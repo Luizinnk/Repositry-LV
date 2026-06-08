@@ -38,6 +38,15 @@ const makeCountry = (country) => ({
     imageQuery: query,
     image: countryImage(query, 900, 900),
   })),
+  facts: country.facts || {},
+  footballStat: country.footballStat || {},
+  dishes: (country.dishes || []).map(([name, description, emoji, imageQuery]) => ({
+    name,
+    description,
+    emoji,
+    imageQuery,
+    image: countryImage(imageQuery, 700, 520),
+  })),
 });
 
 // Para adicionar novos paises, crie uma entrada neste objeto e um arquivo HTML
@@ -74,6 +83,16 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Mais que esporte: uma linguagem afetiva nacional.",
     football: "No Brasil, o futebol atravessa infancia, bairro, radio, televisao, memoria familiar e identidade coletiva. Em Copas do Mundo, jogos viram calendario emocional, com expectativa, cobranca e orgulho.",
     gallery: [["Litoral", "Brazil beach coast"], ["Amazonia", "Amazon rainforest Brazil"], ["Rio de Janeiro", "Rio de Janeiro skyline"], ["Historia", "Brazil colonial architecture"]],
+    facts: { capital: "Brasilia", population: "215 milhoes", language: "Portugues", currency: "Real (BRL)" },
+    footballStat: { titles: 5, firstTitle: 1958, player: "Pele", style: "Jogo bonito" },
+    dishes: [
+      ["Feijoada", "Feijao preto com carnes defumadas. O prato nacional servido toda sexta-feira.", "🫘", "feijoada Brazilian dish"],
+      ["Pao de Queijo", "Bolinho de polvilho e queijo, crocante por fora e elastico por dentro.", "🧀", "pao de queijo Brazil snack"],
+      ["Acaraje", "Bolinho de feijao frito em dende recheado com vatapa. Simbolo da Bahia.", "🫓", "acaraje Salvador Bahia Brazil"],
+      ["Moqueca", "Ensopado de peixe com leite de coco e dende. Versao baiana e capixaba.", "🐟", "moqueca fish stew Brazil"],
+      ["Brigadeiro", "Trufa de chocolate condensado coberta de granulado. Presente em toda festa.", "🍫", "brigadeiro Brazilian chocolate truffle"],
+      ["Churrasco Gaucho", "Cortes nobres na brasa com chimichurri. Tradicao do Sul.", "🥩", "Brazilian churrasco gaucho barbecue"],
+    ],
   }),
 
   argentina: makeCountry({
@@ -100,6 +119,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Uma religiao popular em azul, branco e voz de estadio.",
     football: "Da Bombonera aos idolos mundiais, o futebol argentino e intenso, tecnico, dramatico e profundamente ligado a bairro, familia e pertencimento.",
     gallery: [["Buenos Aires", "Buenos Aires Argentina"], ["Patagonia", "Patagonia Argentina"], ["Mendoza", "Mendoza Argentina wine"], ["Tango", "Argentina tango dancers"]],
+    facts: { capital: "Buenos Aires", population: "46 milhoes", language: "Espanhol", currency: "Peso (ARS)" },
+    footballStat: { titles: 3, firstTitle: 1978, player: "Messi", style: "Tecnico e intenso" },
+    dishes: [
+      ["Asado", "Churrasco de cortes nobres na brasa. Ritual social e orgulho nacional.", "🥩", "Argentina asado barbecue gaucho"],
+      ["Empanadas", "Pasteis recheados de carne, queijo ou outros ingredientes.", "🥟", "Argentina empanadas traditional"],
+      ["Alfajores", "Biscoito de amido recheado de doce de leite e coberto com chocolate.", "🍪", "Argentina alfajor dulce de leche"],
+      ["Mate", "Erva-mate em cuia compartilhada. Ritual de hospitalidade e cotidiano.", "🧉", "Argentina mate gourd drink"],
+    ],
   }),
 
   inglaterra: makeCountry({
@@ -126,6 +153,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "O berco organizado do futebol moderno.",
     football: "A Inglaterra vive o futebol em clubes, arquibancadas, canticos e rivalidades historicas. Wembley simboliza a relacao entre tradicao esportiva e grandes eventos.",
     gallery: [["Londres", "London England"], ["Wembley", "Wembley Stadium"], ["Interior", "England countryside"], ["Musica", "Liverpool England music"]],
+    facts: { capital: "Londres", population: "56 milhoes", language: "Ingles", currency: "Libra (GBP)" },
+    footballStat: { titles: 1, firstTitle: 1966, player: "Beckham", style: "Atletico e tradicional" },
+    dishes: [
+      ["Fish and Chips", "Peixe empanado frito com batatas fritas grossas. Classico de rua britanico.", "🐟", "fish and chips England pub"],
+      ["Sunday Roast", "Assado de domingo com carne, legumes e molho gravy. Ritual semanal.", "🍖", "Sunday roast England traditional"],
+      ["Afternoon Tea", "Cha da tarde com scones, sanduiches e doces. Tradicao do seculo XIX.", "🫖", "afternoon tea England scones"],
+      ["Curry Britanico", "Legado das migracoes: tikka masala e pratos indianos como culinaria nacional.", "🍛", "British chicken tikka masala curry England"],
+    ],
   }),
 
   japao: makeCountry({
@@ -152,6 +187,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Organizacao, velocidade e evolucao constante.",
     football: "O futebol japones cresceu com planejamento, liga forte, formacao tecnica e selecoes competitivas que representam disciplina e transicao rapida.",
     gallery: [["Toquio", "Tokyo Japan"], ["Templos", "Kyoto Japan"], ["Fuji", "Mount Fuji Japan"], ["Gastronomia", "Japanese food sushi"]],
+    facts: { capital: "Toquio", population: "125 milhoes", language: "Japones", currency: "Iene (JPY)" },
+    footballStat: { titles: 0, player: "Kagawa", style: "Tecnico e disciplinado" },
+    dishes: [
+      ["Sushi", "Peixe fresco sobre arroz temperado. Tecnica e produto como filosofia.", "🍣", "sushi Japan traditional nigiri"],
+      ["Ramen", "Caldo profundo com macarrao, ovo e toppings. Conforto japones.", "🍜", "ramen Japan noodle broth"],
+      ["Tempura", "Frutos do mar e vegetais em massa levissima e crocante.", "🍤", "tempura Japan shrimp vegetables"],
+      ["Matcha", "Cha verde em po em drinques, doces e cerimonias.", "🍵", "matcha Japan tea ceremony bowl"],
+    ],
   }),
 
   franca: makeCountry({
@@ -178,6 +221,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Talento multicultural e geracoes vencedoras.",
     football: "A selecao francesa se tornou simbolo de tecnica, velocidade e diversidade, com campanhas marcantes em Copas e jogadores reconhecidos mundialmente.",
     gallery: [["Paris", "Paris France"], ["Provence", "Provence France"], ["Riviera", "French Riviera"], ["Arte", "France museum art"]],
+    facts: { capital: "Paris", population: "68 milhoes", language: "Frances", currency: "Euro (EUR)" },
+    footballStat: { titles: 2, firstTitle: 1998, player: "Zidane", style: "Velocidade e tecnica" },
+    dishes: [
+      ["Croissant", "Massa folhada amanteigada. Simbolo da boulangerie francesa.", "🥐", "croissant France bakery buttery"],
+      ["Coq au Vin", "Frango braseado no vinho tinto com cogumelos e ervas.", "🍷", "coq au vin France classic dish"],
+      ["Queijos Franceses", "Mais de 400 variedades: Brie, Camembert, Roquefort e outros.", "🧀", "French cheese variety platter"],
+      ["Macarons", "Docinhos coloridos de amendoa com recheios cremosos variados.", "🍬", "French macarons colorful Paris bakery"],
+    ],
   }),
 
   espanha: makeCountry({
@@ -204,6 +255,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Toque, posse e clubes globais.",
     football: "A Espanha marcou o futebol com sua escola tecnica, clubes historicos e uma selecao que virou referencia por controle de bola e inteligencia coletiva.",
     gallery: [["Barcelona", "Barcelona Spain"], ["Madrid", "Madrid Spain"], ["Andaluzia", "Andalusia Spain"], ["Tapas", "Spanish tapas food"]],
+    facts: { capital: "Madrid", population: "47 milhoes", language: "Espanhol", currency: "Euro (EUR)" },
+    footballStat: { titles: 1, firstTitle: 2010, player: "Xavi / Iniesta", style: "Tiki-taka" },
+    dishes: [
+      ["Paella", "Arroz com frutos do mar ou carnes, cozinhado na paellera valenciana.", "🥘", "paella Spain Valencia traditional"],
+      ["Tapas", "Petiscos variados nos bares. A cultura espanhola em pequenas porcoes.", "🫒", "tapas Spain bar traditional"],
+      ["Jamon Iberico", "Presunto de porco iberico curado por anos. Ingrediente mais apreciado.", "🍖", "jamon iberico Spain aged cured"],
+      ["Churros con Chocolate", "Massa frita mergulhada em chocolate espesso. Manha madrilenha.", "🍩", "churros chocolate Spain Madrid"],
+    ],
   }),
 
   mexico: makeCountry({
@@ -230,6 +289,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Estadios cheios, festa popular e historia em Copas.",
     football: "O futebol mexicano tem torcidas calorosas, clubes tradicionais e uma relacao especial com Copas do Mundo, incluindo estadios que receberam momentos historicos do esporte.",
     gallery: [["Cidade", "Mexico City"], ["Cores", "Mexico colorful street"], ["Historia", "Mexico ruins"], ["Sabores", "Mexican food tacos"]],
+    facts: { capital: "Cidade do Mexico", population: "130 milhoes", language: "Espanhol", currency: "Peso (MXN)" },
+    footballStat: { titles: 0, player: "Hugo Sanchez", style: "Velocidade e festa" },
+    dishes: [
+      ["Tacos", "Tortilla de milho com carnes, salsa e coentro. Icone da culinaria mexicana.", "🌮", "tacos Mexico street food carne asada"],
+      ["Mole Negro", "Molho complexo com mais de 20 ingredientes, incluindo chocolate.", "🫕", "mole negro Mexico traditional Oaxaca"],
+      ["Guacamole", "Pasta de abacate com limao, coentro e tomate. Onipresente.", "🥑", "guacamole Mexico fresh avocado"],
+      ["Tamal", "Massa de milho recheada e cozida em folha de bananeira. Heranca ancestral.", "🫔", "tamales Mexico corn dough traditional"],
+    ],
   }),
 
   egito: makeCountry({
@@ -256,6 +323,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Paixao popular e torcidas intensas.",
     football: "O futebol egipcio e marcado por clubes tradicionais, torcidas fortes e jogadores que levaram o pais ao radar global.",
     gallery: [["Gize", "Giza Egypt"], ["Nilo", "Nile Egypt"], ["Templos", "Luxor Egypt"], ["Cairo", "Cairo Egypt market"]],
+    facts: { capital: "Cairo", population: "105 milhoes", language: "Arabe", currency: "Libra Egipcia (EGP)" },
+    footballStat: { titles: 0, player: "Mohamed Salah", style: "Veloz e combativo" },
+    dishes: [
+      ["Koshari", "Macarrao, arroz, lentilha e molho de tomate. O prato nacional de rua.", "🍝", "koshari Egypt street food national dish"],
+      ["Ful Medames", "Feijao fava cozido com limao e azeite. Cafe da manha popular.", "🫘", "ful medames Egypt breakfast fava beans"],
+      ["Shawarma", "Carne assada em espeto servida em pao pita com tahine.", "🌯", "shawarma Egypt street food pita"],
+      ["Konafa", "Sobremesa de massa fina com queijo ou creme banhada em calda.", "🍮", "konafa Egypt dessert sweet"],
+    ],
   }),
 
   suica: makeCountry({
@@ -282,6 +357,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Organizacao defensiva e competitividade europeia.",
     football: "A selecao suica costuma se destacar por disciplina tática, jogo coletivo e regularidade em torneios internacionais.",
     gallery: [["Alpes", "Switzerland Alps"], ["Lagos", "Switzerland lake"], ["Vilas", "Swiss village"], ["Zurique", "Zurich Switzerland"]],
+    facts: { capital: "Berna", population: "8.7 milhoes", language: "Alemao / Frances / Italiano", currency: "Franco (CHF)" },
+    footballStat: { titles: 0, player: "Xherdan Shaqiri", style: "Organizado e solido" },
+    dishes: [
+      ["Fondue", "Queijo derretido em panela de barro onde se mergulha pao. Ritual alpino.", "🫕", "cheese fondue Switzerland alpine"],
+      ["Raclette", "Queijo derretido com batatas, picles e cebolas. Classico do inverno.", "🧀", "raclette Switzerland melted cheese"],
+      ["Rosti", "Batata ralada frita em disco dourado. Acompanhamento universal.", "🥔", "rosti Switzerland potato hash"],
+      ["Chocolate Suico", "Referencia mundial com marcas como Lindt, Toblerone e Sprungli.", "🍫", "Swiss chocolate Switzerland Lindt bars"],
+    ],
   }),
 
   italia: makeCountry({
@@ -308,6 +391,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Tatica, paixao e memoria de Copas.",
     football: "O futebol italiano e conhecido por clubes tradicionais, torcidas intensas, defesa forte, leitura tatica e momentos historicos em Copas.",
     gallery: [["Roma", "Rome Italy"], ["Toscana", "Tuscany Italy"], ["Veneza", "Venice Italy"], ["Pasta", "Italian food pasta"]],
+    facts: { capital: "Roma", population: "60 milhoes", language: "Italiano", currency: "Euro (EUR)" },
+    footballStat: { titles: 4, firstTitle: 1934, player: "Roberto Baggio", style: "Catenaccio e beleza" },
+    dishes: [
+      ["Pizza Napoletana", "Massa fina, tomate San Marzano e mozzarella. Patrimonio UNESCO.", "🍕", "Neapolitan pizza Italy Naples wood fired"],
+      ["Pasta al Ragu", "Macarrao com molho de carne cozida lentamente. Receita de familia.", "🍝", "pasta ragu bolognese Italy traditional"],
+      ["Tiramisu", "Mascarpone com cafe e biscoito. Sobremesa italiana mais famosa do mundo.", "🍰", "tiramisu Italy dessert classic"],
+      ["Gelato", "Sorvete artesanal com menos ar e mais sabor. Arte da gelateria.", "🍦", "gelato Italy artisanal flavors"],
+    ],
   }),
 
   uruguai: makeCountry({
@@ -334,6 +425,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Uma camisa pequena no mapa e gigante na historia.",
     football: "O Uruguai tem peso historico enorme em Copas, com titulos, jogadores lendarios e uma cultura competitiva conhecida como garra charrua.",
     gallery: [["Montevideo", "Montevideo Uruguay"], ["Colonia", "Colonia Uruguay"], ["Praias", "Uruguay beach"], ["Futebol", "Uruguay football"]],
+    facts: { capital: "Montevideu", population: "3.5 milhoes", language: "Espanhol", currency: "Peso (UYU)" },
+    footballStat: { titles: 2, firstTitle: 1930, player: "Suarez / Forlan", style: "Garra Charrua" },
+    dishes: [
+      ["Asado Uruguaio", "Churrasco com cortes exclusivos como vacio e costillar.", "🥩", "Uruguay asado barbecue traditional"],
+      ["Chivito", "Sanduiche com file, presunto, ovo, alface e tomate. O lanche nacional.", "🥪", "chivito sandwich Uruguay classic"],
+      ["Mate", "Compartilhado em ruas e parques. Central na identidade cotidiana.", "🧉", "mate Uruguay gourd drink traditional"],
+      ["Dulce de Leche", "Doce de leite cremoso. Base de sobremesas e doces populares.", "🍮", "dulce de leche Uruguay caramel"],
+    ],
   }),
 
   "coreia-sul": makeCountry({
@@ -360,6 +459,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Velocidade, disciplina e torcidas organizadas.",
     football: "A selecao sul-coreana e conhecida por intensidade fisica, organizacao e crescimento constante em competicoes internacionais.",
     gallery: [["Seul", "Seoul Korea"], ["Busan", "Busan Korea"], ["Jeju", "Jeju Korea"], ["Comida", "Korean food"]],
+    facts: { capital: "Seul", population: "52 milhoes", language: "Coreano", currency: "Won (KRW)" },
+    footballStat: { titles: 0, player: "Son Heung-min", style: "Intenso e veloz" },
+    dishes: [
+      ["Kimchi", "Repolho fermentado com pimenta. Presente em toda refeicao coreana.", "🥬", "kimchi Korea fermented traditional"],
+      ["Bibimbap", "Arroz com legumes, carne, ovo frito e pasta de pimenta gochujang.", "🍲", "bibimbap Korea rice bowl"],
+      ["Korean BBQ", "Churrasco coreano grelhado na propria mesa com banchan.", "🥩", "Korean BBQ table grill samgyeopsal"],
+      ["Tteokbokki", "Bolinhos de arroz em molho picante adocicado. Street food favorito.", "🌶️", "tteokbokki Korea street food spicy"],
+    ],
   }),
 
   portugal: makeCountry({
@@ -386,6 +493,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Talento tecnico e orgulho nacional.",
     football: "Portugal tem clubes historicos, jogadores de alcance mundial e uma selecao que se consolidou entre as grandes forcas europeias.",
     gallery: [["Lisboa", "Lisbon Portugal"], ["Porto", "Porto Portugal"], ["Algarve", "Algarve Portugal"], ["Acores", "Azores Portugal"]],
+    facts: { capital: "Lisboa", population: "10 milhoes", language: "Portugues", currency: "Euro (EUR)" },
+    footballStat: { titles: 0, player: "Cristiano Ronaldo", style: "Individual e coletivo" },
+    dishes: [
+      ["Pastel de Nata", "Tortinha de creme com crosta folhada, polvilhado de canela.", "🥮", "pastel nata custard tart Portugal Lisbon"],
+      ["Bacalhau", "Mais de 365 receitas do peixe que moldou a historia culinaria.", "🐟", "bacalhau Portugal codfish traditional"],
+      ["Caldo Verde", "Sopa de covo com chourico. Reconforto em cada tigela.", "🍲", "caldo verde Portugal soup traditional"],
+      ["Vinho do Porto", "Vinho licoroso do Vale do Douro. Exportado para o mundo inteiro.", "🍷", "Porto wine Portugal Douro valley"],
+    ],
   }),
 
   chile: makeCountry({
@@ -412,6 +527,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Geracoes intensas e torcidas vibrantes.",
     football: "O futebol chileno valoriza intensidade, velocidade e uma relacao emocional forte com sua selecao e clubes tradicionais.",
     gallery: [["Atacama", "Atacama Chile"], ["Patagonia", "Patagonia Chile"], ["Valparaiso", "Valparaiso Chile"], ["Vinhos", "Chile vineyard"]],
+    facts: { capital: "Santiago", population: "19 milhoes", language: "Espanhol", currency: "Peso (CLP)" },
+    footballStat: { titles: 0, player: "Alexis Sanchez", style: "Intenso e organizado" },
+    dishes: [
+      ["Empanada de Pino", "Pastel recheado de carne moida, cebola, ovo e azeitona.", "🥟", "empanada pino Chile baked traditional"],
+      ["Completo", "Cachorro-quente com chucrute, abacate e maionese. Identidade nacional.", "🌭", "completo Chile hot dog avocado"],
+      ["Carmenere", "Cepa de vinho que o Chile salvou da extincao. Hoje simbolo nacional.", "🍷", "Carmenere Chile red wine vineyard"],
+      ["Curanto", "Cozido de frutos do mar e carnes em buraco no chao. Tradicao de Chiloe.", "🦪", "curanto Chile Chiloe seafood stew"],
+    ],
   }),
 
   alemanha: makeCountry({
@@ -438,6 +561,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Disciplina, eficiencia e tradicao vencedora.",
     football: "A Alemanha e uma potencia historica em Copas, conhecida por organizacao, mentalidade competitiva e clubes com torcidas fortes.",
     gallery: [["Berlim", "Berlin Germany"], ["Baviera", "Bavaria Germany"], ["Castelos", "Germany castle"], ["Estadio", "Germany football stadium"]],
+    facts: { capital: "Berlim", population: "84 milhoes", language: "Alemao", currency: "Euro (EUR)" },
+    footballStat: { titles: 4, firstTitle: 1954, player: "Franz Beckenbauer", style: "Eficiencia e solidez" },
+    dishes: [
+      ["Bratwurst", "Salsicha grelhada servida em pao com mostarda. Onipresente.", "🌭", "bratwurst Germany sausage grilled"],
+      ["Pretzel", "Pao trancado e salgado. Essencial em cervejarias e festivais.", "🥨", "pretzel Germany Oktoberfest"],
+      ["Schnitzel", "Escalope de carne empanado e frito. Tipico da Baviera.", "🍖", "schnitzel Germany Wiener Schnitzel"],
+      ["Bolo Floresta Negra", "Creme, cerejas e kirsch em camadas de chocolate.", "🎂", "Black Forest cake Germany Schwarzwald"],
+    ],
   }),
 
   marrocos: makeCountry({
@@ -464,6 +595,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Orgulho continental e atmosfera de festa.",
     football: "O futebol marroquino cresceu com clubes populares, torcidas apaixonadas e campanhas recentes que ampliaram o orgulho esportivo do pais.",
     gallery: [["Marrakech", "Marrakech Morocco"], ["Saara", "Sahara Morocco"], ["Chefchaouen", "Chefchaouen Morocco"], ["Medina", "Morocco medina"]],
+    facts: { capital: "Rabat", population: "37 milhoes", language: "Arabe / Berbere", currency: "Dirham (MAD)" },
+    footballStat: { titles: 0, player: "Hakim Ziyech", style: "Aguerrido e tecnico" },
+    dishes: [
+      ["Tajine", "Cozido lento de carne ou peixe com especiarias em pote conico.", "🫕", "tagine Morocco clay pot spices"],
+      ["Couscous", "Semola com legumes e carne. Prato de sexta-feira e celebracao.", "🍲", "couscous Morocco traditional Friday"],
+      ["Pastilla", "Massa folhada com pombo, amendoas e acucar de confeiteiro.", "🥧", "pastilla Morocco Fes pigeon pastry"],
+      ["Cha de Hortela", "Cha verde com hortela fresca e acucar. Simbolo de hospitalidade.", "🫖", "mint tea Morocco traditional hospitality"],
+    ],
   }),
 
   holanda: makeCountry({
@@ -490,6 +629,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Futebol total e criatividade coletiva.",
     football: "A escola holandesa marcou o futebol com ideia de movimento, ocupacao de espacos e talento tecnico, influenciando clubes e selecoes no mundo todo.",
     gallery: [["Amsterdam", "Amsterdam Netherlands"], ["Tulipas", "Netherlands tulips"], ["Moinhos", "Netherlands windmills"], ["Arquitetura", "Rotterdam Netherlands"]],
+    facts: { capital: "Amsterda", population: "17 milhoes", language: "Holandes", currency: "Euro (EUR)" },
+    footballStat: { titles: 0, player: "Johan Cruyff", style: "Futebol Total" },
+    dishes: [
+      ["Stroopwafel", "Dois biscoitos finos com calda de caramelo no meio.", "🍪", "stroopwafel Netherlands caramel waffle"],
+      ["Bitterballen", "Bolinhas fritas de ragu cremoso. Petisco classico de bar.", "🫙", "bitterballen Netherlands bar snack"],
+      ["Haring", "Arenque fresco servido cru com cebola e pepino. Tradicao nacional.", "🐟", "haring herring Netherlands raw onion"],
+      ["Queijo Gouda", "Queijo amarelo suave e envelhecido. Um dos mais exportados do mundo.", "🧀", "Gouda cheese Netherlands aged"],
+    ],
   }),
 
   canada: makeCountry({
@@ -516,6 +663,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Crescimento, velocidade e nova geracao.",
     football: "O futebol canadense ganhou relevancia com novas geracoes, clubes estruturados e aumento de interesse nacional pelo esporte.",
     gallery: [["Banff", "Banff Canada"], ["Toronto", "Toronto Canada"], ["Vancouver", "Vancouver Canada"], ["Inverno", "Canada winter"]],
+    facts: { capital: "Ottawa", population: "39 milhoes", language: "Ingles / Frances", currency: "Dolar Canadense (CAD)" },
+    footballStat: { titles: 0, player: "Alphonso Davies", style: "Atletico e moderno" },
+    dishes: [
+      ["Poutine", "Batatas fritas com queijo coalho e molho gravy. Icone canadense.", "🍟", "poutine Canada Quebec fries gravy cheese"],
+      ["Maple Syrup", "Xarope de bordo no cafe da manha. Sabor e simbolo nacional.", "🍁", "maple syrup Canada pancakes breakfast"],
+      ["Lobster Roll", "Lagosta fresca em pao macio. Especialidade das provincias atlanticas.", "🦞", "lobster roll Canada Atlantic provinces"],
+      ["Tarte au Sucre", "Torta de acucar de bordo. Heranca da culinaria francofona do Quebec.", "🥧", "sugar pie tarte au sucre Quebec Canada"],
+    ],
   }),
 
   senegal: makeCountry({
@@ -542,6 +697,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Forca fisica, tecnica e orgulho continental.",
     football: "O Senegal se consolidou como potencia africana, com jogadores de alto nivel internacional e torcidas que transformam partidas em celebracao.",
     gallery: [["Dakar", "Dakar Senegal"], ["Goree", "Goree Senegal"], ["Baobas", "Senegal baobab"], ["Mercado", "Senegal market"]],
+    facts: { capital: "Dacar", population: "18 milhoes", language: "Frances / Wolof", currency: "Franco CFA (XOF)" },
+    footballStat: { titles: 0, player: "Sadio Mane", style: "Fisico e explosivo" },
+    dishes: [
+      ["Thieboudienne", "Arroz com peixe e legumes. Prato nacional e simbolo culinario.", "🍚", "thieboudienne Senegal national dish rice fish"],
+      ["Yassa Poulet", "Frango marinado em limao e cebola caramelizada.", "🍗", "yassa chicken Senegal lemon onion"],
+      ["Mafe", "Ensopado de carne em molho de amendoim com legumes.", "🥜", "mafe peanut stew Senegal traditional"],
+      ["Bissap", "Suco de hibisco gelado de cor vermelha intensa. Refrescante e popular.", "🫧", "bissap hibiscus juice Senegal drink"],
+    ],
   }),
 
   australia: makeCountry({
@@ -568,6 +731,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Competicao, fisico e crescimento internacional.",
     football: "O futebol australiano cresceu em ligas, selecoes e participacao internacional, mesmo dividindo espaco com outros esportes populares.",
     gallery: [["Sydney", "Sydney Australia"], ["Recife", "Great Barrier Reef"], ["Uluru", "Uluru Australia"], ["Praias", "Australia beach"]],
+    facts: { capital: "Camberra", population: "26 milhoes", language: "Ingles", currency: "Dolar Australiano (AUD)" },
+    footballStat: { titles: 0, player: "Tim Cahill", style: "Fisico e intenso" },
+    dishes: [
+      ["Meat Pie", "Torta de carne. Heranca britanica presente em todo estadio.", "🥧", "meat pie Australia football stadium"],
+      ["Barramundi", "Peixe de agua doce grelhado. Estrela da culinaria costeira.", "🐟", "barramundi fish Australia grilled"],
+      ["Vegemite Toast", "Pasta de extrato de levedura no pao torrado. Ame ou odeie.", "🍞", "vegemite toast Australia breakfast"],
+      ["Tim Tam", "Biscoito de chocolate com recheio cremoso. Obsessao nacional.", "🍫", "Tim Tam biscuit Australia chocolate"],
+    ],
   }),
 
   "estados-unidos": makeCountry({
@@ -594,6 +765,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Um esporte em expansao no pais dos grandes eventos.",
     football: "O futebol nos EUA cresce com ligas profissionais, selecoes competitivas, formacao jovem e grandes eventos internacionais.",
     gallery: [["Nova York", "New York City"], ["Grand Canyon", "Grand Canyon"], ["Los Angeles", "Los Angeles"], ["Estadio", "USA soccer stadium"]],
+    facts: { capital: "Washington D.C.", population: "335 milhoes", language: "Ingles", currency: "Dolar (USD)" },
+    footballStat: { titles: 0, player: "Pulisic / Reyna", style: "Atletico e moderno" },
+    dishes: [
+      ["BBQ Ribs", "Costelas defumadas com molho barbecue. Cada estado tem sua receita.", "🥩", "BBQ ribs USA smoked Kansas City"],
+      ["Cheeseburger", "O icone americano: hamburguer com queijo, alface e tomate.", "🍔", "cheeseburger USA classic diner"],
+      ["Apple Pie", "Torta de maca com sorvete. O doce mais americano de todos.", "🥧", "apple pie USA traditional classic"],
+      ["Clam Chowder", "Sopa cremosa de mariscos. Especialidade da Nova Inglaterra.", "🍲", "clam chowder New England USA Boston"],
+    ],
   }),
 
   croacia: makeCountry({
@@ -620,6 +799,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Tecnica, resistencia e orgulho nacional.",
     football: "A Croacia transformou uma populacao pequena em grande presenca no futebol mundial, com meio-campistas tecnicos e mentalidade competitiva.",
     gallery: [["Dubrovnik", "Dubrovnik Croatia"], ["Split", "Split Croatia"], ["Plitvice", "Plitvice Croatia"], ["Hvar", "Hvar Croatia"]],
+    facts: { capital: "Zagreb", population: "3.9 milhoes", language: "Croata", currency: "Euro (EUR)" },
+    footballStat: { titles: 0, player: "Luka Modric", style: "Tecnico e resistente" },
+    dishes: [
+      ["Peka", "Carne e vegetais assados sob sino de ferro com brasa. Metodo dalmatino.", "🫕", "peka Croatia traditional clay bell"],
+      ["Strukli", "Massa recheada de queijo, assada ou cozida. Especialidade de Zagreb.", "🥟", "strukli Croatia cheese pastry Zagreb"],
+      ["Frutos do Mar Adriatico", "Ostras, lagostins e peixe grelhado com azeite e alho.", "🦪", "Croatia seafood Adriatic grilled fish"],
+      ["Vinho da Istria", "A Istria produz alguns dos melhores vinhos do Adriatico.", "🍷", "Istria Croatia wine Malvasia vineyard"],
+    ],
   }),
 
   gana: makeCountry({
@@ -646,6 +833,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Estrela Negra, velocidade e talento.",
     football: "A selecao ganesa e reconhecida por forca, tecnica, jogadores internacionais e campanhas que mobilizam orgulho continental.",
     gallery: [["Accra", "Accra Ghana"], ["Kente", "Ghana kente"], ["Cape Coast", "Cape Coast Ghana"], ["Comida", "Ghana food"]],
+    facts: { capital: "Acra", population: "33 milhoes", language: "Ingles / Twi", currency: "Cedi (GHS)" },
+    footballStat: { titles: 0, player: "Asamoah Gyan", style: "Veloz e combativo" },
+    dishes: [
+      ["Jollof Rice", "Arroz cozido em molho de tomate e especiarias. Icone da Africa Ocidental.", "🍚", "jollof rice Ghana West Africa"],
+      ["Fufu com Sopa", "Massa de mandioca com sopa de amendoim ou palmito.", "🍲", "fufu soup Ghana traditional peanut"],
+      ["Kelewele", "Banana-da-terra frita com gengibre e pimenta. Street food imperdivel.", "🍌", "kelewele Ghana fried plantain spiced"],
+      ["Groundnut Soup", "Sopa cremosa de amendoim com frango. Receita de familia.", "🥜", "groundnut soup Ghana peanut chicken"],
+    ],
   }),
 
   "arabia-saudita": makeCountry({
@@ -672,6 +867,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Ambicao, estrutura e torcidas fortes.",
     football: "O futebol saudita combina clubes populares, selecao frequente em torneios internacionais e um novo ciclo de alto investimento.",
     gallery: [["Riad", "Riyadh Saudi Arabia"], ["AlUla", "AlUla Saudi Arabia"], ["Deserto", "Saudi desert"], ["Jeddah", "Jeddah Saudi Arabia"]],
+    facts: { capital: "Riade", population: "35 milhoes", language: "Arabe", currency: "Riyal (SAR)" },
+    footballStat: { titles: 0, player: "Salem Al-Dawsari", style: "Rapido e tecnico" },
+    dishes: [
+      ["Kabsa", "Arroz com carne de carneiro ou frango e especiarias. Prato nacional.", "🍚", "kabsa Saudi Arabia rice lamb spices"],
+      ["Harees", "Trigo e carne cozidos lentamente em fogo baixo. Prato do Ramada.", "🫕", "harees Saudi Arabia traditional porridge"],
+      ["Mutabbaq", "Panqueca recheada de carne e ovos, dobrada e frita. Street food.", "🥞", "mutabbaq Saudi Arabia street food"],
+      ["Tamara com Cafe Arabe", "Tamara fresca e cafe com cardamomo. Recepcao obrigatoria.", "☕", "dates Arabic coffee Saudi Arabia"],
+    ],
   }),
 
   belgica: makeCountry({
@@ -698,6 +901,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Talento tecnico e geracao de destaque.",
     football: "A Belgica reuniu jogadores de alto nivel em clubes europeus e se consolidou como selecao competitiva em grandes torneios.",
     gallery: [["Bruges", "Bruges Belgium"], ["Bruxelas", "Brussels Belgium"], ["Chocolate", "Belgian chocolate"], ["Cerveja", "Belgian beer"]],
+    facts: { capital: "Bruxelas", population: "11 milhoes", language: "Holandes / Frances", currency: "Euro (EUR)" },
+    footballStat: { titles: 0, player: "De Bruyne / Hazard", style: "Tecnico e veloz" },
+    dishes: [
+      ["Moules-Frites", "Mexilhoes no vinho branco com batatas fritas belgas. Icone nacional.", "🦪", "moules frites Belgium mussels white wine"],
+      ["Waffles de Bruxelas", "Waffle leve e crocante com chantilly, morango e chocolate.", "🧇", "Belgian waffles Brussels toppings cream"],
+      ["Chocolate Belga", "Pralins, trufas e tabletes. Belgica e Suica disputam o titulo de melhor.", "🍫", "Belgian chocolate pralines Brussels"],
+      ["Cervejas Trappistas", "Mais de 1.500 variedades incluindo Chimay e Orval. Patrimonio UNESCO.", "🍺", "Belgian beer trappist monastery Chimay"],
+    ],
   }),
 
   camaroes: makeCountry({
@@ -724,6 +935,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Leoes Indomaveis e orgulho continental.",
     football: "Camaroes e simbolo do futebol africano em Copas, com jogadores historicos, forca fisica e identidade competitiva.",
     gallery: [["Montanha", "Mount Cameroon"], ["Kribi", "Kribi Cameroon"], ["Mercados", "Cameroon market"], ["Futebol", "Cameroon football"]],
+    facts: { capital: "Yaunde", population: "27 milhoes", language: "Frances / Ingles", currency: "Franco CFA (XAF)" },
+    footballStat: { titles: 0, player: "Roger Milla", style: "Explosivo e atletico" },
+    dishes: [
+      ["Ndole", "Folhas amargas com amendoim e camarao. Prato nacional de Camaroes.", "🥬", "ndole Cameroon national dish peanuts shrimp"],
+      ["Poulet DG", "Frango frito com banana-da-terra e legumes. Prato das celebracoes.", "🍗", "poulet DG Cameroon chicken plantain"],
+      ["Eru", "Folhas de verdura com palmito e carne defumada. Tipico do sudoeste.", "🥬", "eru soup Cameroon traditional"],
+      ["Kati Kati", "Frango assado na brasa com especiarias locais.", "🔥", "grilled chicken Cameroon kati kati"],
+    ],
   }),
 
   polonia: makeCountry({
@@ -750,6 +969,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Centroavantes, disciplina e paixao de arquibancada.",
     football: "A Polonia tem tradicao em Copas, clubes com torcidas intensas e jogadores que se destacaram no futebol europeu.",
     gallery: [["Cracovia", "Krakow Poland"], ["Varsovia", "Warsaw Poland"], ["Gdansk", "Gdansk Poland"], ["Tatras", "Tatra Poland"]],
+    facts: { capital: "Varsovia", population: "38 milhoes", language: "Polones", currency: "Zloti (PLN)" },
+    footballStat: { titles: 0, player: "Robert Lewandowski", style: "Organizado e direto" },
+    dishes: [
+      ["Pierogi", "Pasteis recheados de batata e queijo ou carne. Simbolo da cozinha polaca.", "🥟", "pierogi Poland traditional dumplings"],
+      ["Bigos", "Ensopado de chucrute com carnes variadas defumadas. O cozido nacional.", "🫕", "bigos Poland hunters stew sauerkraut"],
+      ["Zurek", "Sopa azeda de farinha de centeio com ovo cozido e salsicha.", "🍲", "zurek Poland sour rye soup Easter"],
+      ["Zapiekanka", "Baguete com cogumelos, queijo derretido e ketchup. Street food tipico.", "🥖", "zapiekanka Poland street food Krakow"],
+    ],
   }),
 
   "costa-rica": makeCountry({
@@ -776,6 +1003,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Organizacao e campanhas memoraveis.",
     football: "A Costa Rica ja surpreendeu em Copas com organizacao defensiva, goleiros marcantes e grande espirito competitivo.",
     gallery: [["Arenal", "Arenal Costa Rica"], ["Monteverde", "Monteverde Costa Rica"], ["Praias", "Costa Rica beach"], ["Floresta", "Costa Rica rainforest"]],
+    facts: { capital: "San Jose", population: "5.2 milhoes", language: "Espanhol", currency: "Colon (CRC)" },
+    footballStat: { titles: 0, player: "Keylor Navas", style: "Organizado e surpreendente" },
+    dishes: [
+      ["Gallo Pinto", "Arroz com feijao frito juntos. O cafe da manha nacional de Costa Rica.", "🍳", "gallo pinto Costa Rica rice beans breakfast"],
+      ["Casado", "Prato do dia com arroz, feijao, salada, carne e banana frita.", "🍽️", "casado Costa Rica lunch traditional"],
+      ["Ceviche", "Peixe ou camarao marinado em limao com coentro e pimenta.", "🦐", "ceviche Costa Rica fresh seafood"],
+      ["Cafe Costarriquenho", "Um dos melhores cafes do mundo, das montanhas de Tarrazu.", "☕", "Costa Rica coffee arabica Tarrazu mountains"],
+    ],
   }),
 
   dinamarca: makeCountry({
@@ -802,6 +1037,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Coletividade, disciplina e eficiencia.",
     football: "O futebol dinamarques valoriza organizacao, jogo coletivo e geracoes que competem com identidade forte.",
     gallery: [["Copenhague", "Copenhagen Denmark"], ["Nyhavn", "Nyhavn Denmark"], ["Design", "Danish design"], ["Castelos", "Denmark castle"]],
+    facts: { capital: "Copenhague", population: "5.9 milhoes", language: "Dinamarques", currency: "Coroa (DKK)" },
+    footballStat: { titles: 0, player: "Peter Schmeichel", style: "Coletivo e eficiente" },
+    dishes: [
+      ["Smorrebrod", "Fatia de pao escuro com coberturas variadas: arenque, camarao, frios.", "🍞", "smorrebrod Denmark open sandwich rye bread"],
+      ["Flaesk", "Costelinha de porco crocante com salsa cremosa. Prato tradicional.", "🥩", "Danish pork roast flaesk Denmark"],
+      ["Aebleskiver", "Bolinhos esfericos de trigo servidos com gele e acucar de confeiteiro.", "🧆", "aebleskiver Denmark pancake balls traditional"],
+      ["New Nordic Cuisine", "Noma redefiniu a gastronomia mundial com ingredientes locais nordicos.", "🥗", "Noma Copenhagen New Nordic cuisine foraging"],
+    ],
   }),
 
   servia: makeCountry({
@@ -828,6 +1071,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Talento tecnico e arquibancadas intensas.",
     football: "O futebol servio tem clubes historicos, torcidas fortes e jogadores tecnicos formados em uma cultura esportiva competitiva.",
     gallery: [["Belgrado", "Belgrade Serbia"], ["Novi Sad", "Novi Sad Serbia"], ["Mosteiros", "Serbia monastery"], ["Rios", "Danube Serbia"]],
+    facts: { capital: "Belgrado", population: "6.8 milhoes", language: "Servio", currency: "Dinar (RSD)" },
+    footballStat: { titles: 0, player: "Dragan Dzajic", style: "Tecnico e combativo" },
+    dishes: [
+      ["Cevapi", "Pequenos rolinhos de carne moida grelhados. Simbolo dos Balcas.", "🌭", "cevapi Serbia grilled minced meat pita"],
+      ["Pljeskavica", "Hamburguer balcanico recheado de queijo e cebola caramelizada.", "🍔", "pljeskavica Serbia stuffed burger"],
+      ["Ajvar", "Pasta de pimentao assado com alho. O ketchup servio.", "🫑", "ajvar Serbia red pepper relish"],
+      ["Slivovitz", "Aguardente de ameixa. A bebida nacional e simbolo de hospitalidade.", "🥃", "slivovitz plum brandy Serbia traditional"],
+    ],
   }),
 
   tunisia: makeCountry({
@@ -854,6 +1105,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "As Aguias de Cartago e orgulho nacional.",
     football: "A selecao tunisiana representa uma tradicao consistente no futebol africano, com torcidas dedicadas e identidade competitiva.",
     gallery: [["Sidi Bou Said", "Sidi Bou Said Tunisia"], ["Cartago", "Carthage Tunisia"], ["Djerba", "Djerba Tunisia"], ["Medina", "Tunisia medina"]],
+    facts: { capital: "Tunis", population: "12 milhoes", language: "Arabe", currency: "Dinar (TND)" },
+    footballStat: { titles: 0, player: "Wahbi Khazri", style: "Aguerrido e tecnico" },
+    dishes: [
+      ["Couscous", "Semola com legumes, carne e caldo aromatico. Prato de celebracao.", "🍲", "couscous Tunisia traditional lamb vegetables"],
+      ["Brik", "Massa fina frita com ovo, atum e alcaparras. Entrada favorita.", "🥚", "brik Tunisia egg pastry fried"],
+      ["Lablabi", "Sopa de grao-de-bico com harissa e cominho. Street food matinal.", "🫘", "lablabi Tunisia chickpea soup harissa"],
+      ["Harissa", "Pasta de pimenta vermelha com alho e cominho. Condimento nacional.", "🌶️", "harissa Tunisia red pepper paste condiment"],
+    ],
   }),
 
   catar: makeCountry({
@@ -880,6 +1139,14 @@ window.VIAJEIO_COUNTRIES = {
     footballTitle: "Infraestrutura, investimento e legado de Copa.",
     football: "O futebol no Catar ganhou projeção por infraestrutura, clubes, academias e pelo legado de receber uma Copa do Mundo no Oriente Medio.",
     gallery: [["Doha", "Doha Qatar"], ["Souq", "Souq Waqif Qatar"], ["Museu", "Qatar museum"], ["Deserto", "Qatar desert"]],
+    facts: { capital: "Doha", population: "3.0 milhoes", language: "Arabe", currency: "Riyal (QAR)" },
+    footballStat: { titles: 0, player: "Akram Afif", style: "Tecnico e organizado" },
+    dishes: [
+      ["Machboos", "Arroz temperado com carne ou frutos do mar. Prato nacional do Golfo.", "🍚", "machboos Qatar rice lamb national dish"],
+      ["Harees", "Trigo e carne cozidos lentamente. Prato sagrado do Ramada.", "🫕", "harees Qatar traditional Ramadan"],
+      ["Balaleet", "Macarrao doce com acafrao e cardamomo. Cafe da manha tradicional.", "🍜", "balaleet Qatar sweet noodles saffron"],
+      ["Cafe Arabe", "Cafe verde com cardamomo e acafrao. Ritual de recepcao.", "☕", "Arabic coffee Qatar saffron cardamom"],
+    ],
   }),
 };
 

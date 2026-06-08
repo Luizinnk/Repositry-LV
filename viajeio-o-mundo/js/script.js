@@ -15,11 +15,24 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
+    const isOpen = nav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => nav.classList.remove("open"));
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Fechar com Esc
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.focus();
+    }
   });
 }
 
@@ -213,6 +226,93 @@ function hydrateWebImages() {
 }
 
 hydrateWebImages();
+
+/* ── Copa 2026 countdown ─────────────────────────────────── */
+(function initCountdown() {
+  const target = document.getElementById("copa-countdown");
+  if (!target) return;
+
+  // Copa 2026: abertura em 11 jun 2026, 16h (horário de Brasília / UTC-3)
+  const copaStart = new Date("2026-06-11T19:00:00Z");
+
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  function tick() {
+    const diff = copaStart - Date.now();
+
+    if (diff <= 0) {
+      target.innerHTML =
+        '<span class="countdown-live">🏆 Copa em andamento!</span>';
+      return;
+    }
+
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+
+    // Atualiza sem recriar o DOM — só altera os spans internos
+    const units = target.querySelectorAll(".cd-unit span");
+    if (units.length === 4) {
+      units[0].textContent = pad(d);
+      units[1].textContent = pad(h);
+      units[2].textContent = pad(m);
+      units[3].textContent = pad(s);
+    }
+
+    setTimeout(tick, 1000);
+  }
+
+  tick();
+})();
+
+/* ── Busca por país ──────────────────────────────────────── */
+(function initCountrySearch() {
+  const input = document.getElementById("country-search");
+  const emptyMsg = document.getElementById("search-empty");
+  if (!input) return;
+
+  function normalize(str) {
+    return str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "");
+  }
+
+  input.addEventListener("input", () => {
+    const q = normalize(input.value.trim());
+    const allGroups = document.querySelectorAll(".world-group");
+    let totalVisible = 0;
+
+    allGroups.forEach((group) => {
+      const cards = group.querySelectorAll(".country-card");
+      let visibleInGroup = 0;
+
+      cards.forEach((card) => {
+        const name = normalize(card.dataset.countryName || "");
+        const match = !q || name.includes(q);
+        card.style.display = match ? "" : "none";
+        if (match) visibleInGroup++;
+      });
+
+      group.style.display = visibleInGroup > 0 ? "" : "none";
+      totalVisible += visibleInGroup;
+    });
+
+    if (emptyMsg) emptyMsg.hidden = totalVisible > 0;
+  });
+
+  // Limpar busca ao pressionar Esc dentro do input
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      input.value = "";
+      input.dispatchEvent(new Event("input"));
+      input.blur();
+    }
+  });
+})();
 
 function titleFromHref(href) {
   const file = href.split("/").pop().replace(".html", "");

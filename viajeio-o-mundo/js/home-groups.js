@@ -46,7 +46,7 @@
           return `
             <article class="country-card identity-country-card" style="${cardStyle}" data-country-name="${country.name}" data-flag-url="${identity.flagUrl || ""}">
               <span class="card-number">${group.id}${index + 1}</span>
-              <img class="country-photo" src="${country.hero}" data-web-image="${country.heroQuery}" alt="${country.name} na Copa do Mundo de 2026">
+              <img class="country-photo" src="${country.hero}" data-web-image="${country.heroQuery}" alt="${country.name} na Copa do Mundo de 2026" loading="lazy">
               <div class="team-color-ribbon" aria-hidden="true">
                 ${palette.map((color) => `<i style="--swatch:${color}"></i>`).join("")}
               </div>
@@ -68,7 +68,7 @@
                   <b>Por que explorar?</b>
                   <span>${curiosity}</span>
                 </div>
-                <a class="country-link" href="${slug}.html"><span>Explorar pais</span><i aria-hidden="true"></i></a>
+                <a class="country-link" href="${slug}.html"><span>Explorar país</span><i aria-hidden="true"></i></a>
               </div>
             </article>
           `;
@@ -84,7 +84,7 @@
             </div>
             <p>${group.description}</p>
           </div>
-          <div class="group-team-strip" aria-label="Selecoes do Grupo ${group.id}">
+          <div class="group-team-strip" aria-label="Seleções do Grupo ${group.id}">
             ${groupFlags}
           </div>
           <div class="country-grid">${cards}</div>

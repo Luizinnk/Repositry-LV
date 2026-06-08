@@ -13,6 +13,20 @@
   <meta property="og:image"       content="img/logo.png">
   <meta property="og:url"         content="https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/">
   <meta name="twitter:card"       content="summary_large_image">
+  <link rel="canonical"           href="https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Viajeio o Mundo",
+    "description": "Explore os 48 países da Copa do Mundo 2026 — cultura, turismo, gastronomia e futebol de cada seleção.",
+    "url": "https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/",
+    "inLanguage": "pt-BR",
+    "about": { "@type": "SportsEvent", "name": "Copa do Mundo FIFA 2026", "startDate": "2026-06-11" }
+  }
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="img/logo.png" type="image/png">
@@ -29,12 +43,12 @@
       <span>VIAJEIO O MUNDO</span>
     </a>
 
-    <button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menu">
+    <button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
       <span></span>
       <span></span>
     </button>
 
-    <nav class="main-nav" data-nav aria-label="Navegação principal">
+    <nav class="main-nav" id="main-nav" data-nav aria-label="Navegação principal">
       <a href="#grupos">Grupos</a>
       <a href="#experiencia">Como funciona</a>
     </nav>
@@ -51,6 +65,18 @@
         <p class="eyebrow">Copa do Mundo 2026</p>
         <h1>Copa do Mundo<br>2026</h1>
         <p class="hero-subtitle">48 países, 3 sedes, um torneio. Explore a cultura, a gastronomia e o futebol de cada seleção.</p>
+
+        <!-- Countdown Copa 2026 -->
+        <div class="copa-countdown" id="copa-countdown" aria-live="polite" aria-label="Contagem regressiva para a Copa do Mundo 2026">
+          <div class="cd-unit"><span>--</span><b>dias</b></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span>--</span><b>horas</b></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span>--</span><b>min</b></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span>--</span><b>seg</b></div>
+        </div>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="#grupos">Explorar países</a>
           <a class="btn btn-secondary" href="brasil.html">Ver Brasil</a>
@@ -130,8 +156,22 @@
         <p>Clique em qualquer país para ver a página completa com cultura, turismo, gastronomia e futebol.</p>
       </div>
 
+      <!-- Campo de busca -->
+      <div class="country-search-wrap reveal">
+        <input
+          type="search"
+          id="country-search"
+          class="country-search"
+          placeholder="Buscar país..."
+          aria-label="Buscar país"
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </div>
+
       <div class="group-filters reveal" aria-label="Filtrar grupos"></div>
       <div class="groups-wrap" aria-live="polite"></div>
+      <p class="search-empty" id="search-empty" hidden>Nenhum país encontrado para essa busca.</p>
     </section>
 
   </main>

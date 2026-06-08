@@ -8,9 +8,9 @@
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
-  <meta property="og:title"       content="Viajeio o Mundo — Copa 2026">
+  <meta property="og:title"       content="Viajeio o Mundo — Copa do Mundo 2026">
   <meta property="og:description" content="Explore os 48 países da Copa 2026: cultura, turismo, gastronomia e futebol.">
-  <meta property="og:image"       content="img/logo.png">
+  <meta property="og:image"       content="https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/img/logo.png">
   <meta property="og:url"         content="https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/">
   <meta name="twitter:card"       content="summary_large_image">
   <link rel="canonical"           href="https://luizinnk.github.io/Repositry-LV/viajeio-o-mundo/">
@@ -28,8 +28,8 @@
   }
   </script>
 
-  <!-- Favicon -->
   <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="preload" href="img/logo.png" as="image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,82 +37,134 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- ── HEADER ───────────────────────────────────────────── -->
   <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="Viajeio o Mundo">
-      <span class="brand-mark brand-logo-mark"><img src="img/logo.png" alt="Viajeio o Mundo"></span>
+    <a class="brand" href="#top" aria-label="Viajeio o Mundo — página inicial">
+      <span class="brand-logo-mark">
+        <img src="img/logo.png" alt="" width="26" height="26" aria-hidden="true">
+      </span>
       <span>VIAJEIO O MUNDO</span>
     </a>
 
-    <button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
-      <span></span>
-      <span></span>
+    <button class="menu-toggle" type="button" data-menu-toggle
+            aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-nav">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </button>
 
     <nav class="main-nav" id="main-nav" data-nav aria-label="Navegação principal">
       <a href="#grupos">Grupos</a>
       <a href="#experiencia">Como funciona</a>
+      <a href="brasil.html" class="nav-cta">🇧🇷 Brasil</a>
     </nav>
   </header>
 
   <main id="top">
 
-    <!-- ── HERO ─────────────────────────────────────────── -->
-    <section class="hero-home">
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section class="hero-home" aria-label="Copa do Mundo 2026 — Atlas de países">
       <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content reveal">
-        <img class="hero-brand-logo" src="img/logo.png" alt="Viajeio o Mundo">
-        <p class="eyebrow">Copa do Mundo 2026</p>
-        <h1>Copa do Mundo<br>2026</h1>
-        <p class="hero-subtitle">48 países, 3 sedes, um torneio. Explore a cultura, a gastronomia e o futebol de cada seleção.</p>
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-        <!-- Countdown Copa 2026 -->
-        <div class="copa-countdown" id="copa-countdown" aria-live="polite" aria-label="Contagem regressiva para a Copa do Mundo 2026">
-          <div class="cd-unit"><span>--</span><b>dias</b></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit"><span>--</span><b>horas</b></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit"><span>--</span><b>min</b></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit"><span>--</span><b>seg</b></div>
-        </div>
+      <!-- Conteúdo principal (esquerda no desktop) -->
+      <div class="hero-content">
+        <p class="eyebrow">Copa do Mundo 2026</p>
+        <h1>Copa do<br>Mundo 2026</h1>
+        <p class="hero-subtitle">
+          48 países, 3 sedes, um torneio.<br>
+          Explore a cultura, a gastronomia e o futebol de cada seleção.
+        </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#grupos">Explorar países</a>
-          <a class="btn btn-secondary" href="brasil.html">Ver Brasil</a>
+          <a class="btn btn-primary" href="#grupos">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+            Explorar países
+          </a>
+          <a class="btn btn-secondary" href="brasil.html">Ver Brasil 🇧🇷</a>
         </div>
-        <div class="cup-livebar" aria-label="Dados da Copa">
-          <span>48 países</span>
-          <span>12 grupos</span>
-          <span>EUA · México · Canadá</span>
-          <span>Junho 2026</span>
+
+        <div class="cup-livebar" aria-label="Dados da Copa do Mundo 2026">
+          <span>🏆 48 países</span>
+          <span>⚽ 12 grupos</span>
+          <span>🌎 EUA · México · Canadá</span>
+          <span>📅 Jun 2026</span>
         </div>
       </div>
-      <aside class="hero-dashboard reveal" aria-hidden="true">
-        <div class="dashboard-topline">
-          <span>Copa do Mundo 2026</span>
-          <b>Atlas interativo</b>
+
+      <!-- Dashboard lateral (direita no desktop) -->
+      <aside class="hero-dashboard" aria-label="Painel de informações Copa 2026">
+
+        <div class="db-header">
+          <span class="db-badge">
+            <span class="db-dot" aria-hidden="true"></span>
+            Começa em breve
+          </span>
+          <strong class="db-title">Atlas Interativo</strong>
         </div>
-        <div class="host-route">
-          <span>Canadá</span>
-          <i></i>
-          <span>México</span>
-          <i></i>
-          <span>EUA</span>
+
+        <!-- Countdown -->
+        <div class="db-section">
+          <p class="db-label">Contagem regressiva</p>
+          <div class="copa-countdown" id="copa-countdown" role="timer"
+               aria-live="polite" aria-label="Contagem regressiva para a Copa do Mundo 2026">
+            <div class="cd-unit"><span>--</span><b>dias</b></div>
+            <div class="cd-sep" aria-hidden="true">:</div>
+            <div class="cd-unit"><span>--</span><b>horas</b></div>
+            <div class="cd-sep" aria-hidden="true">:</div>
+            <div class="cd-unit"><span>--</span><b>min</b></div>
+            <div class="cd-sep" aria-hidden="true">:</div>
+            <div class="cd-unit"><span>--</span><b>seg</b></div>
+          </div>
         </div>
-        <div class="dashboard-score">
-          <strong>12</strong>
-          <span>grupos</span>
+
+        <!-- Estatísticas da Copa -->
+        <div class="db-stats" aria-label="Estatísticas da Copa">
+          <div class="db-stat">
+            <strong>48</strong>
+            <span>seleções</span>
+          </div>
+          <div class="db-stat">
+            <strong>12</strong>
+            <span>grupos</span>
+          </div>
+          <div class="db-stat">
+            <strong>3</strong>
+            <span>sedes</span>
+          </div>
         </div>
-        <div class="dashboard-flags" aria-hidden="true">
-          <span>🇲🇽</span>
-          <span>🇧🇷</span>
-          <span>🇦🇷</span>
-          <span>🇫🇷</span>
-          <span>🇯🇵</span>
-          <span>🇵🇹</span>
+
+        <!-- Países-sede -->
+        <div class="db-section">
+          <p class="db-label">Países-sede</p>
+          <div class="db-host-list">
+            <a href="estados-unidos.html" class="db-host-pill">🇺🇸 EUA</a>
+            <a href="mexico.html"         class="db-host-pill">🇲🇽 México</a>
+            <a href="canada.html"         class="db-host-pill">🇨🇦 Canadá</a>
+          </div>
         </div>
+
+        <!-- Favoritos -->
+        <div class="db-section" aria-hidden="true">
+          <p class="db-label">Favoritos da Copa</p>
+          <div class="db-flag-row">
+            <a href="brasil.html"    title="Brasil"    class="db-flag-item" tabindex="-1">🇧🇷</a>
+            <a href="argentina.html" title="Argentina" class="db-flag-item" tabindex="-1">🇦🇷</a>
+            <a href="franca.html"    title="França"    class="db-flag-item" tabindex="-1">🇫🇷</a>
+            <a href="portugal.html"  title="Portugal"  class="db-flag-item" tabindex="-1">🇵🇹</a>
+            <a href="espanha.html"   title="Espanha"   class="db-flag-item" tabindex="-1">🇪🇸</a>
+            <a href="alemanha.html"  title="Alemanha"  class="db-flag-item" tabindex="-1">🇩🇪</a>
+          </div>
+        </div>
+
       </aside>
+
       <div class="hero-scroll" aria-hidden="true">
         <span>Role para explorar</span>
         <i></i>
@@ -126,7 +178,7 @@
         <h2>Cada seleção tem sua própria página</h2>
         <p>Abra qualquer país e encontre tudo: pontos turísticos, gastronomia, história e o que esperar na Copa.</p>
       </div>
-      <div class="experience-runway reveal" aria-label="Passos">
+      <div class="experience-runway reveal" aria-label="Passos para explorar">
         <span><b>01</b> Escolha o grupo</span>
         <span><b>02</b> Abra o país</span>
         <span><b>03</b> Explore o conteúdo</span>
@@ -158,27 +210,59 @@
 
       <!-- Campo de busca -->
       <div class="country-search-wrap reveal">
+        <label for="country-search" class="sr-only">Buscar país</label>
         <input
           type="search"
           id="country-search"
           class="country-search"
-          placeholder="Buscar país..."
-          aria-label="Buscar país"
+          placeholder="Buscar país…"
+          aria-label="Buscar entre os 55 destinos"
           autocomplete="off"
           spellcheck="false"
         >
+        <button class="search-clear-btn" id="search-clear-btn"
+                type="button" aria-label="Limpar busca" hidden>✕</button>
       </div>
 
-      <div class="group-filters reveal" aria-label="Filtrar grupos"></div>
-      <div class="groups-wrap" aria-live="polite"></div>
-      <p class="search-empty" id="search-empty" hidden>Nenhum país encontrado para essa busca.</p>
+      <!-- Meta da busca -->
+      <div class="search-meta" id="search-meta" aria-live="polite" aria-atomic="true" hidden>
+        <span id="search-count"></span>
+        <button type="button" class="btn-link" id="search-meta-clear">Limpar</button>
+      </div>
+
+      <!-- Filtros por grupo -->
+      <div class="group-filters reveal" role="group" aria-label="Filtrar por grupo"></div>
+
+      <!-- Filtros por região / categoria -->
+      <div class="region-filters reveal" role="group" aria-label="Filtrar por região ou categoria"></div>
+
+      <!-- Lista de grupos e cards -->
+      <div class="groups-wrap" aria-live="polite" aria-label="Lista de países"></div>
+
+      <!-- Estado vazio -->
+      <div class="search-empty" id="search-empty" hidden role="status">
+        <div class="empty-icon" aria-hidden="true">🔍</div>
+        <p>Nenhum país encontrado para essa busca.</p>
+        <button type="button" class="btn btn-secondary btn-sm" id="empty-clear-btn">
+          Limpar busca
+        </button>
+      </div>
     </section>
 
   </main>
 
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
   <footer class="site-footer">
-    <span><img src="img/logo.png" alt="">VIAJEIO O MUNDO</span>
-    <p>Copa do Mundo 2026 · 48 países · 12 grupos</p>
+    <div class="footer-brand">
+      <img src="img/logo.png" alt="Viajeio o Mundo" width="22" height="22" loading="lazy">
+      <span>VIAJEIO O MUNDO</span>
+    </div>
+    <p class="footer-tagline">Copa do Mundo 2026 · 48 países · 12 grupos · 3 sedes</p>
+    <nav class="footer-nav" aria-label="Links do rodapé">
+      <a href="#grupos">Grupos</a>
+      <a href="#experiencia">Como funciona</a>
+      <a href="brasil.html">Brasil 🇧🇷</a>
+    </nav>
   </footer>
 
   <script src="js/country-data.js"></script>
